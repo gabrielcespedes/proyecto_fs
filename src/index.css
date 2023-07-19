@@ -15,3 +15,8 @@ code {
 .tarjeta {
   width: 18rem;
 }
+
+.image {
+  height: 400px ;
+  object-fit: contain;
+}

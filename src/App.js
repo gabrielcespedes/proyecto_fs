@@ -7,6 +7,7 @@ import MyContext from './my_context';
 
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
+import Carousel from './components/Carousel';
 
 import Home from './views/Home';
 
@@ -31,6 +32,7 @@ function App() {
     <MyContext.Provider value={estadoCompartido}>
       <BrowserRouter>
         <Navbar></Navbar>
+        <Carousel></Carousel>
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
         </Routes>
