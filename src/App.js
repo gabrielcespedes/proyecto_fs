@@ -7,6 +7,7 @@ import MyContext from './my_context';
 
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
+
 import Home from './views/Home';
 
 
