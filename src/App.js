@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from "react";
+
+import MyContext from './my_context';
+
+import Navbar from "./components/Navbar";
+
+import Home from './views/Home';
 
 function App() {
+  const endpoint = "/database.json";
+  const [artworks, setArtworks] = useState([]);
+  const estadoCompartido = {artworks, setArtworks};
+
+  useEffect(() => {
+    dataArtworks();
+  }, [])
+
+  const dataArtworks = async () => {
+    const responseData = await fetch(endpoint)
+    const dataArtworks = await responseData.json();
+    setArtworks(dataArtworks);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider value={estadoCompartido}>
+      <BrowserRouter>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path='/' element={<Home></Home>}></Route>
+        </Routes>                  
+      </BrowserRouter>  
+    </MyContext.Provider>      
   );
 }
 
