@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import MyContext from './my_context';
 
 import Navbar from "./components/Navbar";
-
+import Footer from './components/Footer';
 import Home from './views/Home';
+
+
 
 function App() {
   const endpoint = "/database.json";
@@ -21,7 +23,7 @@ function App() {
   const dataArtworks = async () => {
     const responseData = await fetch(endpoint)
     const dataArtworks = await responseData.json();
-    setArtworks(dataArtworks);
+    setArtworks(dataArtworks.artworks);
   }
 
   return (
@@ -30,7 +32,8 @@ function App() {
         <Navbar></Navbar>
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
-        </Routes>                  
+        </Routes>
+        <Footer></Footer>                  
       </BrowserRouter>  
     </MyContext.Provider>      
   );
