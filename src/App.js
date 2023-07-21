@@ -10,6 +10,9 @@ import Footer from './components/Footer';
 import Carousel from './components/Carousel';
 
 import Home from './views/Home';
+import NotFound from "./views/NotFound.jsx";
+import Registro from "./views/Registro.jsx";
+import Login from "./views/Login.jsx";
 
 
 
@@ -34,7 +37,10 @@ function App() {
         <Navbar></Navbar>
         <Carousel></Carousel>
         <Routes>
-          <Route path='/' element={<Home></Home>}></Route>
+          <Route path='/' element={<Home />} />
+          <Route path="/Registro" element={<Registro />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer></Footer>                  
       </BrowserRouter>  
