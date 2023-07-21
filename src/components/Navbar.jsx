@@ -9,11 +9,17 @@ const Navbar = () => {
                     <h5> <Link to="/carrito" className="text-light text-decoration-none">🛒</Link></h5>
                 </div>
                 <div>
-                    <h5 className="text-light">Menú</h5></div>
+                    <h5><Link to="/" className="text-light text-decoration-none">🎨</Link></h5>
+                </div>
                 <div>
-                    <h5 className="text-light">Búsqueda</h5></div>
+                    <h5 className="text-light">Menú</h5>
+                </div>
                 <div>
-                    <h5 className="text-light">Registro</h5></div>
+                    <h5 className="text-light">Búsqueda</h5>
+                </div>
+                <div>
+                    <h5 className="text-light">Registro</h5>
+                </div>
                 <div>
                     <h5><Link to="" className="text-light text-decoration-none">Inicio de Sesión</Link></h5>
                 </div>                                                
