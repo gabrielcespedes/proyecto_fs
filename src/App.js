@@ -10,7 +10,6 @@ import Footer from './components/Footer';
 
 
 import Home from './views/Home';
-import Artwork from './views/Artwork';
 
 
 
@@ -35,7 +34,6 @@ function App() {
         <Navbar></Navbar>
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
-          <Route path='/artwork/:id' element={<Artwork></Artwork>}></Route>
         </Routes>
         <Footer></Footer>                  
       </BrowserRouter>  
