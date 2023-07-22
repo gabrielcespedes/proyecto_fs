@@ -17,9 +17,9 @@ const LoginView = () => {
         console.log('Email:', email);
         console.log('Password:', password);
 
-        // Ejemplo de usuario
-        const userData = {
-            /* name: 'John Doe',
+        // Ejemplo de usuarios
+        const userData = {/* 
+            name: 'John Doe',
             email: 'johndoe@example.com',
             orders: [
                 {
