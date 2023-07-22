@@ -1,13 +1,16 @@
 import React from 'react';
+import { Card, ListGroup } from 'react-bootstrap';
 
 const OrderItem = ({ order }) => {
     return (
-        <div>
-            <h5>Orden: {order.id}</h5>
-            <p>Fecha: {order.date}</p>
-            <p>Total: ${order.total}</p>
-            {/* Puedes mostrar más información sobre el pedido, como los artículos comprados, el estado del pedido, etc. */}
-        </div>
+        <Card>
+            <Card.Body>
+                <Card.Title>Orden: {order.id}</Card.Title>
+                <Card.Text>Fecha: {order.date}</Card.Text>
+                <Card.Text>Estado: {order.status}</Card.Text>
+                <Card.Text>Total: ${order.total}</Card.Text>
+            </Card.Body>
+        </Card>
     );
 };
 

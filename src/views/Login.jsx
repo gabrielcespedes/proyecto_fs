@@ -17,10 +17,18 @@ const LoginView = () => {
         console.log('Email:', email);
         console.log('Password:', password);
 
-        // Simulamos el inicio de sesión exitoso
+        // Ejemplo de usuario
         const userData = {
-            name: 'John Doe',
+            /* name: 'John Doe',
             email: 'johndoe@example.com',
+            orders: [
+                {
+                    id: 1,
+                    date: '2023-07-18',
+                    status: 'Enviado',
+                    total: 50.0,
+                },
+            ], */
         };
         setIsLoggedIn(true);
         setUser(userData);

@@ -1,12 +1,15 @@
-// CommentItem.js
 import React from 'react';
+import { Card, ListGroup } from 'react-bootstrap';
 
 const CommentItem = ({ comment }) => {
     return (
-        <div>
-            <h5>Producto: {comment.product}</h5>
-            {/* Muestra el comentario o calificación */}
-        </div>
+        <Card>
+            <Card.Body>
+                <Card.Title>Producto: {comment.product}</Card.Title>
+                <Card.Text>Calificación: {comment.rating}</Card.Text>
+                <Card.Text>Comentario: {comment.comment}</Card.Text>
+            </Card.Body>
+        </Card>
     );
 };
 

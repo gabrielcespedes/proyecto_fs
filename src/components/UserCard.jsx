@@ -21,7 +21,18 @@ const UserCard = ({ user }) => {
                         ))}
                     </ListGroup.Item>
                 ) : (
-                    <ListGroup.Item>No hay pedidos disponibles</ListGroup.Item>
+                    <ListGroup.Item>
+                        <h4>Pedidos</h4>
+                        {/* Ejemplo de pedido */}
+                        <OrderItem
+                            order={{
+                                id: 1,
+                                date: '2023-07-18',
+                                status: 'Enviado',
+                                total: 50.0,
+                            }}
+                        />
+                    </ListGroup.Item>
                 )}
 
                 {user.comments && user.comments.length > 0 ? (
@@ -32,7 +43,18 @@ const UserCard = ({ user }) => {
                         ))}
                     </ListGroup.Item>
                 ) : (
-                    <ListGroup.Item>No hay comentarios/calificaciones disponibles</ListGroup.Item>
+                    <ListGroup.Item>
+                        <h4>Comentarios/Calificaciones</h4>
+                        {/* Ejemplo de comentario */}
+                        <CommentItem
+                            comment={{
+                                id: 1,
+                                productId: 1,
+                                rating: 4,
+                                comment: 'Excelente producto',
+                            }}
+                        />
+                    </ListGroup.Item>
                 )}
             </ListGroup>
         </Card>
