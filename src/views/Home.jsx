@@ -6,8 +6,19 @@ import MyContext from "../my_context";
 import Carousel from '../components/Carousel';
 
 const Home = () => {
-    const { artworks, setArtworks } = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal } = useContext(MyContext);
     const navigate = useNavigate();
+
+    const Add_Click = (id) => {
+        const artwork_id = artworks.findIndex((element) => element.id == id);
+        artworks[artwork_id].amount = artworks[artwork_id].amount + 1;
+        setArtworks([...artworks]);
+        let total = 0;
+        artworks.forEach((element) => {
+            total += element.price * element.amount;
+        });
+        setNavTotal(total);
+    }
 
     return(
         <>
@@ -22,7 +33,10 @@ const Home = () => {
                                     <h5>{element.title}</h5>
                                     <hr></hr>
                                     <p>{element.description}</p>
-                                    <p className="text-end">Value: {element.price}</p>
+                                    <div className="d-flex justify-content-around">
+                                        <button onClick={() => Add_Click(element.id)} className="btn btn-secondary">Añadir 🛒</button>
+                                        <button className="btn" >Value: {element.price}</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
