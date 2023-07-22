@@ -7,6 +7,7 @@ import MyContext from './my_context';
 
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
+import UserViewBuyer from './views/UserViewBuyer';
 
 
 import Home from './views/Home';
@@ -14,6 +15,7 @@ import Artwork from './views/Artwork';
 import NotFound from "./views/NotFound.jsx";
 import Registro from "./views/Registro.jsx";
 import Login from "./views/Login.jsx";
+/* import UserCard from './components/UserCard'; */
 
 
 
@@ -42,6 +44,7 @@ function App() {
           <Route path='/artwork/:id' element={<Artwork></Artwork>}></Route>
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Profile" element={UserViewBuyer} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer></Footer>                  

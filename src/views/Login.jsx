@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserViewBuyer from './UserViewBuyer';
 
 
 const LoginView = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -13,11 +16,21 @@ const LoginView = () => {
         // Lógica de inicio de sesión
         console.log('Email:', email);
         console.log('Password:', password);
+
+        // Simulamos el inicio de sesión exitoso
+        const userData = {
+            name: 'John Doe',
+            email: 'johndoe@example.com',
+        };
+        setIsLoggedIn(true);
+        setUser(userData);
     };
 
-    return (
+    return isLoggedIn ? (
+        <UserViewBuyer user={user} />
+    ) : (
         <Container className="d-flex justify-content-center align-items-center flex-column vh-100">
-            <h5 className="mb-3">Inicia Sesion</h5>
+            <h5 className="mb-3">Inicia Sesión</h5>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formEmail">
                     <Form.Label>Email</Form.Label>
@@ -48,5 +61,6 @@ const LoginView = () => {
         </Container>
     );
 };
+
 
 export default LoginView;

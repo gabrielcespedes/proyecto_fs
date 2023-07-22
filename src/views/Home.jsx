@@ -12,7 +12,7 @@ const Home = () => {
     return(
         <>
             <Carousel></Carousel>
-            <div className="row">
+            <div className="row w-100 ">
                 {artworks.map(
                     (element, index) => (
                         <div key={index} className='col-12 col-md-6 col-xl-3'>
