@@ -15,7 +15,7 @@ const RegisterView = () => {
     };
 
     return (
-        <Container className="d-flex justify-content-center align-items-center flex-column ">
+        <Container className="d-flex justify-content-center align-items-center vh-100 flex-column">
             <Form onSubmit={handleSubmit} className="p-1">
                 <h5 className="mb-4">Registro de usuario</h5>
                 <Form.Group className="mb-3" controlId="formFullName">

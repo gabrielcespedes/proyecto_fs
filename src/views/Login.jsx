@@ -16,7 +16,7 @@ const LoginView = () => {
     };
 
     return (
-        <Container className="d-flex justify-content-center align-items-center flex-column ">
+        <Container className="d-flex justify-content-center align-items-center flex-column vh-100">
             <h5 className="mb-3">Inicia Sesion</h5>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formEmail">
