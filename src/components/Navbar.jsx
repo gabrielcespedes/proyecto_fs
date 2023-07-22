@@ -8,6 +8,9 @@ const Navbar = () => {
                 <div className="navbar-brand">
                     <h5> <Link to="/carrito" className="text-light text-decoration-none">🛒</Link></h5>
                 </div>
+                <div className="navbar-brand">
+                    <h5> <Link to="/" className="text-light text-decoration-none">🎨</Link></h5>
+                </div>
                 <div>
                     <h5 className="text-light">Menú</h5></div>
                 <div>
