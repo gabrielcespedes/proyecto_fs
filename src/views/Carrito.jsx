@@ -34,20 +34,17 @@ const Carrito = () => {
                         return element;
                     }
                 }).map((element, index) => {return(
-                <div className="d-flex">
-                    <p key={index}>
+                <div className="d-flex"><p key={index}>
                     <img src={element.url_image} width="100" alt="imagen obra"></img> {element.title}</p> 
-                    <p key={index+10} className="ms-5">${element.price * element.amount} 
+                    <p key={index+10} className="ms-auto">${element.price * element.amount} 
                     <button className="btn btn-danger mx-2" onClick={() => button_minus(element.id)}>-</button> <strong>    {element.amount}</strong> 
                     <button className="btn btn-primary mx-2" onClick={() => button_mas(element.id)}>+</button> </p> 
                     <hr></hr></div> )})}
-                    <div className="me-auto">
-                        <div className="me-auto">
-                            <h3 className="text-dark">Total: ${calculateTotal()}                                        
-                            </h3>
+                    <div className="text-end">
+                        <h3 className="text-dark">Total: ${calculateTotal()}                                        
+                        </h3>
                         <button className="btn btn-success">Ir a Pagar</button>
-                    </div> 
-                    </div>                                   
+                    </div>                
             </div>
         </div>
     )
