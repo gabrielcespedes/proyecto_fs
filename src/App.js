@@ -22,20 +22,39 @@ import Login from "./views/Login.jsx";
 
 function App() {
   const endpoint = "/database.json";
+  const endpointArtists = "/artistsDB.json";
   const [artworks, setArtworks] = useState([]);
   const [navTotal, setNavTotal] = useState(0); 
-  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal};
+  const [artistsInfo, setArtistsInfo] = useState([]);
+
 
   useEffect(() => {
     dataArtworks();
+    dataArtists();
   }, [])
 
   const dataArtworks = async () => {
-    const responseData = await fetch(endpoint)
+    const responseData = await fetch(endpoint);
     const dataArtworks = await responseData.json();
     dataArtworks.artworks.map(element => element.amount = 0);
     setArtworks([...dataArtworks.artworks]);
-  }
+  };
+
+  const dataArtists = async () => {
+    const responseData = await fetch(endpointArtists);
+    const data = await responseData.json();
+    setArtistsInfo([...data.artists]);
+  };
+
+  const updatingNavTotal = () => {
+    //CALCULA EL VALOR TOTAL DEL CARRITO
+    let total = 0;
+        artworks.forEach((element) => {
+            total += element.price * element.amount;
+        });
+    return total
+  };
+  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo};
 
   return (
     

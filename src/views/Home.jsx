@@ -3,26 +3,22 @@ import { useNavigate } from 'react-router-dom';
 
 import MyContext from "../my_context";
 
-import Carousel from '../components/Carousel';
+import CarouselImages from '../components/Carousel';
 
 const Home = () => {
-    const { artworks, setArtworks, setNavTotal } = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal, updatingNavTotal } = useContext(MyContext);
     const navigate = useNavigate();
 
     const Add_Click = (id) => {
         const artwork_id = artworks.findIndex((element) => element.id == id);
         artworks[artwork_id].amount = artworks[artwork_id].amount + 1;
         setArtworks([...artworks]);
-        let total = 0;
-        artworks.forEach((element) => {
-            total += element.price * element.amount;
-        });
-        setNavTotal(total);
+        setNavTotal(updatingNavTotal);
     }
 
     return(
         <>
-            <Carousel></Carousel>
+            <CarouselImages></CarouselImages>
             <div className="row w-100 ">
                 {artworks.map(
                     (element, index) => (
