@@ -16,6 +16,7 @@ import Artwork from './views/Artwork';
 import NotFound from "./views/NotFound.jsx";
 import Registro from "./views/Registro.jsx";
 import Login from "./views/Login.jsx";
+import Busqueda from './views/Busqueda';
 /* import UserCard from './components/UserCard'; */
 
 
@@ -64,6 +65,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/carrito' element={<Carrito></Carrito>}></Route>
+          <Route path='/busqueda' element={<Busqueda></Busqueda>}></Route>
           <Route path='/artwork/:id' element={<Artwork></Artwork>}></Route>
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />

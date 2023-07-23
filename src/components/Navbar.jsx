@@ -18,7 +18,7 @@ const Navbar = () => {
                 <div>
                     <h5 className="text-light">Menú</h5></div>
                 <div>
-                    <h5 className="text-light">Búsqueda</h5>
+                    <h5><Link to="/busqueda" className="text-light text-decoration-none">Búsqueda</Link></h5>
                 
                 </div>
                 <div>

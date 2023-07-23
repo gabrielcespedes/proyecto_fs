@@ -45,7 +45,7 @@ const Artwork = () => {
                 <Button className="mx-2 bg-light text-dark" onClick={decrement}>-</Button>
                 <h3 className="mx-1">{count}</h3>
                 <Button className="mx-2 bg-light text-dark" onClick={increment}>+</Button>
-                <Button variant="dark p-2" onClick={addingAmount}>AGREGAR AL CARRITO</Button>
+                <Button variant="dark p-2" onClick={addingAmount}>Añadir <i class="fa-solid fa-cart-shopping"></i></Button>
             </ButtonGroup>
             </Col>
         </Row>
