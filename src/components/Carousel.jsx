@@ -20,17 +20,16 @@ const CarouselImages = () => {
             <Container>        
                 <Row xs={1} md={2} lg={2}>
                     <Col>
-                    <Carousel>
+                    <Carousel className="fondo">
                     {randomArtists().map(
                         (element, index) => (
 
                             <Carousel.Item>
                                 <img
-                                className="d-block w-100"
+                                className="d-block w-100 image"
                                 key={index}
                                 src={element.user_image}
                                 height="400"
-                                width="100"
                                 alt="First slide"/>
                             <Carousel.Caption>
                                 <h3>{element.username}</h3>
@@ -41,13 +40,13 @@ const CarouselImages = () => {
                     </Carousel>
                     </Col>
                     <Col>
-                    <Carousel>
+                    <Carousel className="fondo">
                     {randomArtists().map(
                         (element, index) => (
 
                             <Carousel.Item>
                                 <img
-                                className="d-block w-100"
+                                className="d-block w-100 image"
                                 key={index}
                                 src={element.user_image}
                                 height="400"

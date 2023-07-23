@@ -20,3 +20,7 @@ code {
   height: 400px ;
   object-fit: contain;
 }
+
+.fondo {
+  background-color: gainsboro;
+}
