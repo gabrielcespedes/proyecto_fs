@@ -6,16 +6,14 @@ const UserViewBuyer = ({ user }) => {
 
     console.log('Datos de usuario:', user);
     return (
-        <Container className='d-flex align-items-center flex-column vh-100 mt-5'>
-            <h2>Bienvenido, {user.name}</h2>
+        <Container className='d-flex align-items-center flex-column vh-100 mt-5 pt-5'>
+            <h2>Bienvenido, {user.username}</h2>
 
             <Row>
                 <Col xs={12} md={12}>
                     <UserCard user={user} />
                 </Col>
             </Row>
-
-
         </Container>
     );
 };

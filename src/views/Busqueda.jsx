@@ -20,7 +20,7 @@ const Busqueda = () => {
 
     return (
         <div className="row w-100 ">
-            <input className="form-control bg-light text-center text-dark" placeholder="Busca en ©Artworks Marketplace" onChange={handleInputFilter}></input>
+            <input className=" fixed-top mt-5 form-control bg-light text-center text-dark" placeholder="Busca en ©Artworks Marketplace" onChange={handleInputFilter}></input>
             {artworks.filter((elemento) => {
                 if (input_filter === '') {
                     return elemento;

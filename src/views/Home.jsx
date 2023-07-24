@@ -10,16 +10,16 @@ const Home = () => {
     const navigate = useNavigate();
 
     const Add_Click = (id) => {
-        const artwork_id = artworks.findIndex((element) => element.id == id);
+        const artwork_id = artworks.findIndex((element) => element.id === id);
         artworks[artwork_id].amount = artworks[artwork_id].amount + 1;
         setArtworks([...artworks]);
         setNavTotal(updatingNavTotal);
     }
 
     return(
-        <>
+        <div className="pt-5">
             <CarouselImages></CarouselImages>
-            <div className="row w-100 ">
+            <div className="row w-100 mt-5">
                 {artworks.map(
                     (element, index) => (
                         <div key={index} className='col-12 col-md-6 col-xl-3'>
@@ -40,7 +40,7 @@ const Home = () => {
                 )
                 }
             </div>
-        </>
+        </div>
     )
 
 }

@@ -30,7 +30,7 @@ const Artwork = () => {
     console.log(selectedArtwork);
 
     return(
-        <Container className="border p-3 m-4">
+        <Container className="border m-5 p-5">
         <Row xs={1} md={2} lg={2}>
             <Col>
             <Card>
