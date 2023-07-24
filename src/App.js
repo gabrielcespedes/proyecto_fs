@@ -69,10 +69,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home />}> </>
-          <Route path='/carrito' element={<Carrito />}> </>
-          <Route path='/busqueda' element={<Busqueda />}> </>
-          <Route path='/artwork/:id' element={<Artwork />}> </>
+          <Route path='/' element={<Home />}/> 
+          <Route path='/carrito' element={<Carrito />}/>
+          <Route path='/busqueda' element={<Busqueda />}/> 
+          <Route path='/artwork/:id' element={<Artwork />}/> 
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Profile" element={UserViewBuyer} />
