@@ -22,7 +22,7 @@ const CarouselImages = () => {
             <Container>        
                 <Row xs={1} md={2} lg={2}>
                     <Col>
-                    <h3 className="text-center">Artistas</h3>
+                    <h3 className="text-center mt-3">Artistas</h3>
                     <Carousel className="fondo">
                     {randomChoose(artistsInfo).map(
                         (element, index) => (
@@ -44,7 +44,7 @@ const CarouselImages = () => {
                     </Carousel>
                     </Col>
                     <Col>
-                    <h3 className="text-center">Ofertas</h3>
+                    <h3 className="text-center mt-3">Ofertas</h3>
                     <Carousel className="fondo">
                     {randomChoose(artworks).map(
                         (element, index) => (
