@@ -8,7 +8,7 @@ const Busqueda = () => {
     const navigate = useNavigate();
 
     const Add_Click = (id) => {
-        const artwork_id = artworks.findIndex((element) => element.id == id);
+        const artwork_id = artworks.findIndex((element) => element.id === id);
         artworks[artwork_id].amount = artworks[artwork_id].amount + 1;
         setArtworks([...artworks]);
         setNavTotal(updatingNavTotal);
@@ -18,34 +18,34 @@ const Busqueda = () => {
         setInput_filter(e.target.value);
     }
 
-    return(
+    return (
         <div className="row w-100 ">
-            <input className="form-control bg-light text-center text-dark" placeholder="Busca en ©Artworks Marketplace" onChange={handleInputFilter}></input>
-                {artworks.filter((elemento) => {
-                    if (input_filter === '') {
-                        return elemento;
-                    } else if (elemento.title.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase()) || elemento.description.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase())) {
-                        return elemento;
-                    }
-                }).map(
-                    (element, index) => (
-                        <div key={index} className='col-12 col-md-6 col-xl-3'>
-                            <div className='card m-auto my-4 tarjeta'>
-                                <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img>
-                                <div className="card-body">
-                                    <h5>{element.title}</h5>
-                                    <hr></hr>
-                                    <p>{element.description}</p>
-                                    <div className="d-flex justify-content-around">
-                                        <button onClick={() => Add_Click(element.id)} className="btn    btn-secondary">Añadir <i class="fa-solid fa-cart-shopping"></i></button>
-                                        <button className="btn" >Value: {element.price}</button>
-                                    </div>
+            <input className=" fixed-top mt-5 form-control bg-light text-center text-dark" placeholder="Busca en ©Artworks Marketplace" onChange={handleInputFilter}></input>
+            {artworks.filter((elemento) => {
+                if (input_filter === '') {
+                    return elemento;
+                } else if (elemento.title.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase()) || elemento.description.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase())) {
+                    return elemento;
+                }
+            }).map(
+                (element, index) => (
+                    <div key={index} className='col-12 col-md-6 col-xl-3'>
+                        <div className='card m-auto my-4 tarjeta'>
+                            <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img>
+                            <div className="card-body">
+                                <h5>{element.title}</h5>
+                                <hr></hr>
+                                <p>{element.description}</p>
+                                <div className="d-flex justify-content-around">
+                                    <button onClick={() => Add_Click(element.id)} className="btn    btn-secondary">Añadir <i class="fa-solid fa-cart-shopping"></i></button>
+                                    <button className="btn" >Value: {element.price}</button>
                                 </div>
                             </div>
                         </div>
-                    )
+                    </div>
                 )
-                }
+            )
+            }
         </div>
     )
 }

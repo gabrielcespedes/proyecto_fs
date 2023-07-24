@@ -5,7 +5,7 @@ import CommentItem from './CommentItem';
 
 const UserCard = ({ user }) => {
     return (
-        <Card>
+        <Card className='mt-5'>
             <Card.Body>
                 <Card.Title>{user.name}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{user.email}</Card.Subtitle>

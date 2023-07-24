@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserViewBuyer from './UserViewBuyer';
-
+import MyContext from "../my_context";
 
 const LoginView = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { artistsInfo } = useContext(MyContext);
 
     // Agregar aquí la lógica para manejar el envío del formulario
     const handleSubmit = (e) => {
@@ -17,21 +18,16 @@ const LoginView = () => {
         console.log('Email:', email);
         console.log('Password:', password);
 
-        // Ejemplo de usuarios
-        const userData = {/* 
-            name: 'John Doe',
-            email: 'johndoe@example.com',
-            orders: [
-                {
-                    id: 1,
-                    date: '2023-07-18',
-                    status: 'Enviado',
-                    total: 50.0,
-                },
-            ], */
-        };
-        setIsLoggedIn(true);
-        setUser(userData);
+        // Verificar las credenciales ingresadas con el JSON de artistas
+        const foundUser = artistsInfo.find((artist) => artist.email === email && artist.password === password);
+
+        if (foundUser) {
+            setIsLoggedIn(true);
+            setUser(foundUser);
+        } else {
+            // Mostrar mensaje de error o manejar el inicio de sesión fallido
+            console.log('Inicio de sesión fallido. Credenciales inválidas.');
+        }
     };
 
     return isLoggedIn ? (
@@ -69,6 +65,5 @@ const LoginView = () => {
         </Container>
     );
 };
-
 
 export default LoginView;

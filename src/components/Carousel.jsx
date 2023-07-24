@@ -2,6 +2,7 @@ import { useContext } from "react";
 import MyContext from "../my_context";
 import { Carousel, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
+
 const CarouselImages = () => {
     const { artistsInfo, artworks } = useContext(MyContext);
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ const CarouselImages = () => {
                                 src={element.user_image}
                                 height="400"
                                 alt="First slide"/>
-                            <Carousel.Caption>
+                            <Carousel.Caption style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '10px' }}>
                                 <h3>{element.username}</h3>
                                 <p>{element.description}</p>
                             </Carousel.Caption>
@@ -56,7 +57,9 @@ const CarouselImages = () => {
                                 src={element.url_image}
                                 height="400"
                                 alt="First slide"/>
-                            <Carousel.Caption>
+
+                            <Carousel.Caption style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '10px' }}>
+                                <h3>{element.username}</h3>
                                 <h3>{element.title}</h3>
                                 <p>{element.description}</p>
                             </Carousel.Caption>

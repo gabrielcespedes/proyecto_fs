@@ -7,7 +7,7 @@ const Navbar = () => {
     const {navTotal} = useContext(MyContext);
     
     return(
-        <div className="navbar bg-secondary">
+        <div className="navbar bg-secondary fixed-top w-100">
             <div className="container">
                 <div className="navbar-brand">
                     <h5> <Link to="/carrito" className="text-light text-decoration-none"><i class="fa-solid fa-cart-shopping"></i> ${navTotal}</Link></h5>
