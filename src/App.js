@@ -16,9 +16,12 @@ import Artwork from './views/Artwork';
 import NotFound from "./views/NotFound.jsx";
 import Registro from "./views/Registro.jsx";
 import Login from "./views/Login.jsx";
-import DetailArtist from './views/DetailArtist';
+
 /* import UserCard from './components/UserCard'; */
 
+
+
+import DetailArtist from './views/DetailArtist';
 
 
 function App() {
@@ -67,11 +70,15 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/carrito' element={<Carrito />} />
           <Route path='/artwork/:id' element={<Artwork />} />
-          <Route path='/artist/:id' element={<DetailArtist />} />
+
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Profile" element={UserViewBuyer} />
           <Route path="*" element={<NotFound />} />
+
+
+          <Route path='/artist/:id' element={<DetailArtist />} />
+
         </Routes>
         <Footer />                  
       </BrowserRouter>  
