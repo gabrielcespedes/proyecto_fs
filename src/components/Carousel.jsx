@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import MyContext from "../my_context";
 import { Carousel, Container, Row, Col } from "react-bootstrap";
+
 const CarouselImages = () => {
     const { artistsInfo } = useContext(MyContext);
     const randomArtists = () => {
@@ -31,7 +32,7 @@ const CarouselImages = () => {
                                 src={element.user_image}
                                 height="400"
                                 alt="First slide"/>
-                            <Carousel.Caption>
+                            <Carousel.Caption style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '10px' }}>
                                 <h3>{element.username}</h3>
                                 <p>{element.description}</p>
                             </Carousel.Caption>
@@ -51,7 +52,7 @@ const CarouselImages = () => {
                                 src={element.user_image}
                                 height="400"
                                 alt="First slide"/>
-                            <Carousel.Caption>
+                            <Carousel.Caption style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '10px' }}>
                                 <h3>{element.username}</h3>
                                 <p>{element.description}</p>
                             </Carousel.Caption>
