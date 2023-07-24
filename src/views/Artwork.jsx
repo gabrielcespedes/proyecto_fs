@@ -10,6 +10,7 @@ const Artwork = () => {
     const { artworks, setArtworks, setNavTotal, updatingNavTotal } = useContext(MyContext);
     const {id} = useParams();
     const [count, setCount] = useState(1)
+    
     const increment = () => {
         setCount(count + 1);
     };
@@ -23,11 +24,7 @@ const Artwork = () => {
     const addingAmount = () => {
         selectedArtwork.amount += count;
         setNavTotal(updatingNavTotal);
-    }
-
-    console.log(id);
-    console.log(artworks);
-    console.log(selectedArtwork);
+    };
 
     return(
         <Container className="border p-3 m-4">

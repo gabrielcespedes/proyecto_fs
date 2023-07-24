@@ -16,9 +16,14 @@ import Artwork from './views/Artwork';
 import NotFound from "./views/NotFound.jsx";
 import Registro from "./views/Registro.jsx";
 import Login from "./views/Login.jsx";
+
 import Busqueda from './views/Busqueda';
+
 /* import UserCard from './components/UserCard'; */
 
+
+
+import DetailArtist from './views/DetailArtist';
 
 
 function App() {
@@ -55,24 +60,29 @@ function App() {
         });
     return total
   };
+  
   const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo};
 
   return (
     
     <MyContext.Provider value={estadoCompartido}>
       <BrowserRouter>
-        <Navbar></Navbar>
+        <Navbar />
         <Routes>
-          <Route path='/' element={<Home></Home>}></Route>
-          <Route path='/carrito' element={<Carrito></Carrito>}></Route>
-          <Route path='/busqueda' element={<Busqueda></Busqueda>}></Route>
-          <Route path='/artwork/:id' element={<Artwork></Artwork>}></Route>
+          <Route path='/' element={<Home />}> </>
+          <Route path='/carrito' element={<Carrito />}> </>
+          <Route path='/busqueda' element={<Busqueda />}> </>
+          <Route path='/artwork/:id' element={<Artwork />}> </>
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Profile" element={UserViewBuyer} />
           <Route path="*" element={<NotFound />} />
+
+
+          <Route path='/artist/:id' element={<DetailArtist />} />
+
         </Routes>
-        <Footer></Footer>                  
+        <Footer />                  
       </BrowserRouter>  
     </MyContext.Provider>      
   );
