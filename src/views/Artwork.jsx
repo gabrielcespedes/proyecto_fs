@@ -10,6 +10,7 @@ const Artwork = () => {
     const { artworks, setArtworks, setNavTotal, updatingNavTotal } = useContext(MyContext);
     const {id} = useParams();
     const [count, setCount] = useState(1)
+    
     const increment = () => {
         setCount(count + 1);
     };

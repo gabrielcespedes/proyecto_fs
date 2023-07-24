@@ -55,6 +55,7 @@ function App() {
         });
     return total
   };
+  
   const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo};
 
   return (
