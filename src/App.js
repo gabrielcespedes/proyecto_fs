@@ -17,6 +17,8 @@ import NotFound from "./views/NotFound.jsx";
 import Registro from "./views/Registro.jsx";
 import Login from "./views/Login.jsx";
 
+import Busqueda from './views/Busqueda';
+
 /* import UserCard from './components/UserCard'; */
 
 
@@ -67,10 +69,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/carrito' element={<Carrito />} />
-          <Route path='/artwork/:id' element={<Artwork />} />
-
+          <Route path='/' element={<Home />}> </>
+          <Route path='/carrito' element={<Carrito />}> </>
+          <Route path='/busqueda' element={<Busqueda />}> </>
+          <Route path='/artwork/:id' element={<Artwork />}> </>
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Profile" element={UserViewBuyer} />
