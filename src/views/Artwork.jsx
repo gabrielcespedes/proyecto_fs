@@ -7,7 +7,7 @@ import { useContext } from "react";
 import MyContext from "../my_context";
 
 const Artwork = () => {
-    const { artworks, setArtworks, setNavTotal, updatingNavTotal } = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal, updatingNavTotal, artistsInfo } = useContext(MyContext);
     const {id} = useParams();
     const [count, setCount] = useState(1)
     
@@ -21,6 +21,7 @@ const Artwork = () => {
     };
 
     let selectedArtwork = artworks[artworks.findIndex((element) => element.id == id)];
+    let artist = artistsInfo[artistsInfo.findIndex((e) => e.user_id == selectedArtwork.artist_id)];
     const addingAmount = () => {
         selectedArtwork.amount += count;
         setNavTotal(updatingNavTotal);
@@ -36,6 +37,7 @@ const Artwork = () => {
             </Col>
             <Col>
             <Card.Title className='text-left'>{selectedArtwork.title}</Card.Title>
+            <Card.Text className="my-3 text-left"><strong>Artist: {artist.username}</strong></Card.Text>
             <Card.Text className="my-3 text-left">{selectedArtwork.description}</Card.Text>
             <Card.Text className='h4 text-left'>{Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP'}).format(selectedArtwork.price)}</Card.Text>
             <ButtonGroup className='mt-3'>
