@@ -23,11 +23,7 @@ const Artwork = () => {
     const addingAmount = () => {
         selectedArtwork.amount += count;
         setNavTotal(updatingNavTotal);
-    }
-
-    console.log(id);
-    console.log(artworks);
-    console.log(selectedArtwork);
+    };
 
     return(
         <Container className="border p-3 m-4">

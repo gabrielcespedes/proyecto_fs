@@ -18,7 +18,7 @@ const Home = () => {
 
     return(
         <>
-            <CarouselImages></CarouselImages>
+            <CarouselImages />
             <div className="row w-100 ">
                 {artworks.map(
                     (element, index) => (
