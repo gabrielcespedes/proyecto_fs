@@ -15,6 +15,8 @@ const DetailArtist = () => {
 
     const artistCollection = artworks.filter((element) => element.artist_id == id);
 
+    
+
 
     return (
         <Container className="border p-3 m-4  mt-5">
