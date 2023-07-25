@@ -17,7 +17,7 @@ const DetailArtist = () => {
 
 
     return (
-        <Container className="border p-3 m-4">
+        <Container className="border p-3 m-4  mt-5">
         <Row xs={1} md={2} lg={2}>
             <Col>
             <Card>
