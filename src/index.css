@@ -30,3 +30,9 @@ code {
   height: 100%;
   width: 100%;
 }
+
+.minus {
+  color: #fff;
+  background-color: fuchsia;
+  border-color: fuchsia;
+}

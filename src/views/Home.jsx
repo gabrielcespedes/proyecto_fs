@@ -31,7 +31,7 @@ const Home = () => {
                                     <p>{element.description}</p>
                                     <div className="d-flex justify-content-around">
                                         <button onClick={() => Add_Click(element.id)} className="btn btn-secondary">Añadir <i class="fa-solid fa-cart-shopping"></i></button>
-                                        <button className="btn" >Value: {element.price}</button>
+                                        <button className="btn" >Value: ${element.price}</button>
                                     </div>
                                 </div>
                             </div>
