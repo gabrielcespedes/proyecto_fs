@@ -66,6 +66,7 @@ const UserViewBuyer = ({ user }) => {
                         <br></br>
                         <input className='form-control' placeholder='Descripción' onChange={handleInput_description} value={input_description}></input>
                         <br></br>
+                        <label className='label-left'>Valor:</label>
                         <input className='form-control' placeholder='Valor' onChange={handleInput_price} value={input_price}></input>
                         <br></br>
                         <input className='form-control' placeholder='url imagen' onChange={handleInput_url_image} value={input_url_image}></input>

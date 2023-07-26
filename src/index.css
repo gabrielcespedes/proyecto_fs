@@ -31,8 +31,6 @@ code {
   width: 100%;
 }
 
-.minus {
-  color: #fff;
-  background-color: fuchsia;
-  border-color: fuchsia;
+.label-left {
+  text-align: left;
 }
