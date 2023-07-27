@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import MyContext from "../my_context";
 
 const Favoritos = () => {
-    const { artworks, setArtworks} = useContext(MyContext);
+    const { artworks, setArtworks, user} = useContext(MyContext);
     
     const navigate = useNavigate();
 
     return (
         <div className="row w-100 my-5">
             {artworks.filter((elemento) => {
-                if (elemento.liked == true) {
-                    return elemento;
+                if (user.favorites.includes(elemento.id)) {
+                    return elemento;                    
                 }}).map(
                 (element, index) => (
                     <div key={index} className='col-12 col-md-6 col-xl-3'>

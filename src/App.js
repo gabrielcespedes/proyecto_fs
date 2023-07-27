@@ -54,6 +54,7 @@ function App() {
   const dataArtists = async () => {
     const responseData = await fetch(endpointArtists);
     const data = await responseData.json();
+    data.artists.map(element => element.favorites = []);
     setArtistsInfo([...data.artists]);
   };
 

@@ -8,20 +8,43 @@ import CarouselImages from '../components/Carousel';
 import Heart from '../components/Heart';
 
 const Home = () => {
-    const { artworks, setArtworks, setNavTotal, updatingNavTotal} = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, user} = useContext(MyContext);
     const navigate = useNavigate();
 
     const Add_Click = (id) => {
-        const artwork_id = artworks.findIndex((element) => element.id === id);
-        artworks[artwork_id].amount = artworks[artwork_id].amount + 1;
+        const artwork_index = artworks.findIndex((element) => element.id === id);
+        artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
         setArtworks([...artworks]);
         setNavTotal(updatingNavTotal);
     }
 
-    const Heart_Click = (id) => {
+    const Heart_Click = (id, user_id) => {
         const img_index = artworks.findIndex((img) => img.id == id);
+        const artist_index = artistsInfo.findIndex((e) => e.user_id == user_id);        
+        const favoritos = artistsInfo[artist_index].favorites;
+        const imageToRemoveIndex = favoritos.indexOf(id);
+
+        if (imageToRemoveIndex == -1) {
+            artistsInfo[artist_index].favorites.push(id);
+            setArtistsInfo([...artistsInfo]);
+        } else {
+            artistsInfo[artist_index].favorites.splice(imageToRemoveIndex, 1);
+        }
+        
+        console.log(artistsInfo);
+
         artworks[img_index].liked = !artworks[img_index].liked;
         setArtworks([...artworks]);
+    }
+
+    const Evaluate_Heart = (id, user_id) => {
+        const artist_index = artistsInfo.findIndex((e) => e.user_id == user_id);        
+        const favoritos = artistsInfo[artist_index].favorites;
+        if (favoritos.includes(id)) {
+            return true;
+        } else {
+            return false;
+        }   
     }
 
     return(
@@ -34,7 +57,8 @@ const Home = () => {
                             <div className='card m-auto my-4 tarjeta'>
                                 {/* <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img> */}
                                 <div className="foto" style={{backgroundImage: `url(${element.url_image})`}}>
-                                    <Heart filled={(element.liked)} onClick={() => Heart_Click(element.id)}></Heart>
+                                    {user != null && <Heart filled={Evaluate_Heart(element.id, user.user_id)} onClick={() => Heart_Click(element.id, user.user_id)}></Heart>
+                                    }                                    
                                 </div>                                
                                 <div className="card-body">
                                     <h5>{element.title}</h5>
