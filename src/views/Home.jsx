@@ -56,12 +56,11 @@ const Home = () => {
                         <div key={index} className='col-12 col-md-6 col-xl-3'>
                             <div className='card m-auto my-4 tarjeta'>
                                 {/* <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img> */}
-                                <div className="foto" style={{backgroundImage: `url(${element.url_image})`}}>
-                                    {user != null && <Heart filled={Evaluate_Heart(element.id, user.user_id)} onClick={() => Heart_Click(element.id, user.user_id)}></Heart>
-                                    }                                    
+                                <div className="foto" style={{backgroundImage: `url(${element.url_image})`}} onClick={() => navigate(`/artwork/${element.id}`)} >                                                                     
                                 </div>                                
                                 <div className="card-body">
-                                    <h5>{element.title}</h5>
+                                    <h5 className="d-flex justify-content-between">{element.title} {user != null && <Heart filled={Evaluate_Heart(element.id, user.user_id)} onClick={() => Heart_Click(element.id, user.user_id)}></Heart>
+                                    }   </h5>
                                     <hr></hr>
                                     <p>{element.description}</p>
                                     <div className="d-flex justify-content-around">
