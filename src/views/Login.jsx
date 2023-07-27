@@ -5,11 +5,9 @@ import UserViewBuyer from './UserViewBuyer';
 import MyContext from "../my_context";
 
 const LoginView = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { artistsInfo } = useContext(MyContext);
+    const { artistsInfo, isLoggedIn, setIsLoggedIn, user, setUser } = useContext(MyContext);
 
     // Agregar aquí la lógica para manejar el envío del formulario
     const handleSubmit = (e) => {

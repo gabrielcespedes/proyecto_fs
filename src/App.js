@@ -16,6 +16,7 @@ import Artwork from './views/Artwork';
 import NotFound from "./views/NotFound.jsx";
 import Registro from "./views/Registro.jsx";
 import Login from "./views/Login.jsx";
+import Favoritos from "./views/Favoritos";
 
 import Busqueda from './views/Busqueda';
 
@@ -33,6 +34,9 @@ function App() {
   const [navTotal, setNavTotal] = useState(0); 
   const [artistsInfo, setArtistsInfo] = useState([]);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+
 
   useEffect(() => {
     dataArtworks();
@@ -43,6 +47,7 @@ function App() {
     const responseData = await fetch(endpoint);
     const dataArtworks = await responseData.json();
     dataArtworks.artworks.map(element => element.amount = 0);
+    dataArtworks.artworks.map(element => element.liked = false);
     setArtworks([...dataArtworks.artworks]);
   };
 
@@ -60,8 +65,8 @@ function App() {
         });
     return total
   };
-  
-  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo};
+
+  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, isLoggedIn, setIsLoggedIn, user, setUser};
 
   return (
     
@@ -72,6 +77,7 @@ function App() {
           <Route path='/' element={<Home />}/> 
           <Route path='/carrito' element={<Carrito />}/>
           <Route path='/busqueda' element={<Busqueda />}/> 
+          <Route path='/favoritos' element={<Favoritos />}/> 
           <Route path='/artwork/:id' element={<Artwork />}/> 
           <Route path="/Registro" element={<Registro />} />
           <Route path="/Login" element={<Login />} />

@@ -5,8 +5,10 @@ import MyContext from "../my_context";
 
 import CarouselImages from '../components/Carousel';
 
+import Heart from '../components/Heart';
+
 const Home = () => {
-    const { artworks, setArtworks, setNavTotal, updatingNavTotal } = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal, updatingNavTotal} = useContext(MyContext);
     const navigate = useNavigate();
 
     const Add_Click = (id) => {
@@ -14,6 +16,12 @@ const Home = () => {
         artworks[artwork_id].amount = artworks[artwork_id].amount + 1;
         setArtworks([...artworks]);
         setNavTotal(updatingNavTotal);
+    }
+
+    const Heart_Click = (id) => {
+        const img_index = artworks.findIndex((img) => img.id == id);
+        artworks[img_index].liked = !artworks[img_index].liked;
+        setArtworks([...artworks]);
     }
 
     return(
@@ -24,7 +32,10 @@ const Home = () => {
                     (element, index) => (
                         <div key={index} className='col-12 col-md-6 col-xl-3'>
                             <div className='card m-auto my-4 tarjeta'>
-                                <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img>
+                                {/* <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img> */}
+                                <div className="foto" style={{backgroundImage: `url(${element.url_image})`}}>
+                                    <Heart filled={(element.liked)} onClick={() => Heart_Click(element.id)}></Heart>
+                                </div>                                
                                 <div className="card-body">
                                     <h5>{element.title}</h5>
                                     <hr></hr>
