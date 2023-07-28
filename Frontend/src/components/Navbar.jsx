@@ -21,9 +21,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-brand">
                     <h5> <Link to="/" className="text-light text-decoration-none"><i class="fa-solid fa-palette"></i></Link></h5>
-                </div>
-                <div>
-                    <h5 className="text-light">Menú</h5></div>
+                </div>                
                 <div>
                     <h5><Link to="/busqueda" className="text-light text-decoration-none">Búsqueda</Link></h5>
                 
@@ -47,9 +45,7 @@ const Navbar = () => {
                 </div>
             <div className="navbar-brand">
                 <h5> <Link to="/" className="text-light text-decoration-none"><i class="fa-solid fa-palette"></i></Link></h5>
-            </div>
-            <div>
-                <h5 className="text-light">Menú</h5></div>
+            </div>            
             <div>
                 <h5><Link to="/busqueda" className="text-light text-decoration-none">Búsqueda</Link></h5>
             </div>
