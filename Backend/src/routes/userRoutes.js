@@ -1,5 +1,9 @@
 const router = require('express').Router();
+const userController = require('../controllers/userController');
 
-//AQUI HAY QUE AGREGAR LOS METODOS GET Y POST ETC
+router.get('', userController.userLogued);
+router.get('/:id', userController.oneUser);
+router.put('/:id', userController.update);
+router.delete('/:id', userController.destroy);
 
 module.exports = router;
