@@ -1,13 +1,3 @@
-// const URL_API = "http://localhost:3000/artworks";
-
-// export const getArtworks = async () => {
-//     const response = await fetch(URL_API);
-//     const data = await response.json();
-//     return data;
-// };
-
-// // artworksService.js
-
 import axios from 'axios';
 
 // Función para obtener las obras de arte desde el backend
