@@ -40,12 +40,24 @@ function App() {
 
   // Conexión Backend - Frontend
 
-  useEffect(() => {
-    // Llamada a la función para obtener las obras de arte
+  // useEffect(() => {    
+  //   getArtworks()
+  //     .then((data) => setArtworks(data))
+  //     .catch((error) => console.error('Error al obtener las obras de arte:', error));
+  // }, []);
+
+  useEffect(() => {    
     getArtworks()
-      .then((data) => setArtworks(data))
+      .then((data) => {
+        const artworksWithAmount = data.map((artwork) => ({
+          ...artwork,
+          amount: 0,
+        }));
+        setArtworks([...artworksWithAmount]);
+      })
       .catch((error) => console.error('Error al obtener las obras de arte:', error));
   }, []);
+
 
   ///////////////////////////////
 
@@ -53,6 +65,8 @@ function App() {
     // dataArtworks();
     dataArtists();
   }, [])
+
+  
 
   // const dataArtworks = async () => {
   //   const responseData = await fetch(endpoint);
