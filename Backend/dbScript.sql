@@ -1,5 +1,5 @@
 
-CREATE DATABASE artmarket;
+CREATE DATABASE artMarket;
 \c artmarket
 
 DROP TABLE IF EXISTS users;
