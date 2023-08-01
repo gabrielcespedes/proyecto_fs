@@ -32,16 +32,35 @@ CREATE TABLE verified_artists (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-DROP TABLE IF EXISTS shoppingcart;
-CREATE TABLE shoppingcart (
-    cart_id SERIAL PRIMARY KEY,
+DROP TABLE IF EXISTS shoppingcarts;
+CREATE TABLE shoppingcarts (
+    shoppingcart_id SERIAL PRIMARY KEY,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+)
+
+DROP TABLE IF EXISTS details_shoppingcart;
+CREATE TABLE details_shoppingcart (
+    detail_cart_id SERIAL PRIMARY KEY,
     user_id INT,
     product_id INT,
     quantity INT,
     total_amount INT,
+    shoppingcart_id INT,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    FOREIGN KEY (shoppingcart_id) REFERENCES shoppingcarts(shoppingcart_id)
 );
+
+DROP TABLE IF EXISTS favorites;
+CREATE TABLE favorites (
+    favorite_id SERIAL PRIMARY KEY,
+    user_id INT,
+    product_id INT,
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+) 
+
 
 
 INSERT INTO users (username, email, password) VALUES
