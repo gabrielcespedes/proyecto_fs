@@ -51,3 +51,7 @@ code {
   text-align: left;
   text-shadow: 0px 0px 15px black;
 }
+
+.heart_pointer {
+  cursor: pointer;
+}

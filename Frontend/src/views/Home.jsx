@@ -29,12 +29,12 @@ const Home = () => {
             setArtistsInfo([...artistsInfo]);
         } else {
             artistsInfo[artist_index].favorites.splice(imageToRemoveIndex, 1);
+            setArtistsInfo([...artistsInfo]);
         }
         
         console.log(artistsInfo);
 
-        artworks[img_index].liked = !artworks[img_index].liked;
-        setArtworks([...artworks]);
+        
     }
 
     const Evaluate_Heart = (id, user_id) => {

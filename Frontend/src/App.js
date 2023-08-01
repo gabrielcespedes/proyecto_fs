@@ -47,7 +47,6 @@ function App() {
     const responseData = await fetch(endpoint);
     const dataArtworks = await responseData.json();
     dataArtworks.artworks.map(element => element.amount = 0);
-    dataArtworks.artworks.map(element => element.liked = false);
     setArtworks([...dataArtworks.artworks]);
   };
 
