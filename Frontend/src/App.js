@@ -26,9 +26,10 @@ import Busqueda from './views/Busqueda';
 
 import DetailArtist from './views/DetailArtist';
 
+import { getArtworks } from './services/artworksService';
+
 
 function App() {
-  const endpoint = "/database.json";
   const endpointArtists = "/artistsDB.json";
   const [artworks, setArtworks] = useState([]);
   const [navTotal, setNavTotal] = useState(0); 
@@ -37,18 +38,28 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
 
+  // Conexión Backend - Frontend
 
   useEffect(() => {
-    dataArtworks();
+    // Llamada a la función para obtener las obras de arte
+    getArtworks()
+      .then((data) => setArtworks(data))
+      .catch((error) => console.error('Error al obtener las obras de arte:', error));
+  }, []);
+
+  ///////////////////////////////
+
+  useEffect(() => {
+    // dataArtworks();
     dataArtists();
   }, [])
 
-  const dataArtworks = async () => {
-    const responseData = await fetch(endpoint);
-    const dataArtworks = await responseData.json();
-    dataArtworks.artworks.map(element => element.amount = 0);
-    setArtworks([...dataArtworks.artworks]);
-  };
+  // const dataArtworks = async () => {
+  //   const responseData = await fetch(endpoint);
+  //   const dataArtworks = await responseData.json();
+  //   dataArtworks.artworks.map(element => element.amount = 0);
+  //   setArtworks([...dataArtworks.artworks]);
+  // };
 
   const dataArtists = async () => {
     const responseData = await fetch(endpointArtists);
