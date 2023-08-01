@@ -19,10 +19,12 @@ code {
 .image {
   height: 400px ;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .fondo {
   background-color: gainsboro;
+
 }
 
 .artist-collection {
