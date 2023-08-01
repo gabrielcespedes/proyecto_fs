@@ -4,7 +4,7 @@ const getProducts = async () => {
   const query = 'SELECT * FROM products';
     try {
         const { rows } = await pool.query(query);
-        return rows;
+        return rows[0];
     } catch (error) {
     throw new Error(error);
     }
@@ -14,13 +14,13 @@ const getProductById = async (id) => {
     const query = 'SELECT * FROM products WHERE product_id = $1';
     try {
         const response = await pool.query(query, [id]);
-        return response.rows;
+        return response.rows[0];
     } catch (error) {
         throw new Error(error);
     }
 };
 
-const createProduct = async (product) => {
+const createProduct = async (seller_id, product) => {
     const query =
       'INSERT INTO products (title, description, price, url_image, seller_id) VALUES ($1, $2, $3, $4, $5) RETURNING *';
     try {
@@ -29,9 +29,9 @@ const createProduct = async (product) => {
             product.description,
             product.price,
             product.url_image,
-            product.seller_id
+            seller_id
         ]);
-        return response.rows;
+        return response.rows[0];
     } catch (error) {
         throw new Error(error);
     }
@@ -47,7 +47,7 @@ const updateProduct = async (id, product) => {
             product.price, 
             product.url_image, 
             id]);
-        return response.rows;
+        return response.rows[0];
     } catch (error) {
         throw new Error(error);
     }
@@ -57,7 +57,7 @@ const deleteProduct = async (id) => {
     const query = 'DELETE FROM products WHERE product_id = $1';
     try {
         const response = await pool.query(query, [id]);
-        return response.rows;
+        return response.rows[0];
     } catch (error) {
         throw new Error(error);
     }
@@ -67,7 +67,7 @@ const getCartInfoByID = async (id) => {
     const query = 'SELECT * FROM shoppingcart WHERE cart_id = $1';
     try {
         const response = await pool.query(query, [id]);
-        return response.rows;
+        return response.rows[0];
     } catch (error) {
         throw new Error(error);
     }
