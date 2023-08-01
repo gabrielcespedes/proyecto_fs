@@ -16,6 +16,11 @@ app.listen(PORT, () => {
     console.log(`SERVIDOR ENCENDIDO EN PUERTO ${PORT}`);
 });
 
+// ruta default
+app.get('/', (req, res) => {
+    res.send('ArtMarket');
+});
+
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/artworks', artworksRoutes);
