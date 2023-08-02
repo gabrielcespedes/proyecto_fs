@@ -1,5 +1,14 @@
 const pool = require('../config/pool');
 
+const getUsers = async () => {
+    const query = 'SELECT * FROM users';
+    try {
+        const response = await pool.query(query);
+        return response.rows;
+    } catch (error) {
+        throw new Error(error);
+    }
+};
 
 const getUserById = async (id) => {
     const query = 'SELECT * FROM users WHERE user_id = $1';
@@ -68,6 +77,7 @@ const deleteUser = async (id) => {
 
 
 module.exports = {
+    getUsers,
     getUserById,
     getUserByUsername,
     getUserByEmail,

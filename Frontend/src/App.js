@@ -28,6 +28,7 @@ import DetailArtist from './views/DetailArtist';
 
 import { getArtworks } from './services/artworksService';
 import { getVerifiedArtists } from './services/artistService';
+import { getUsers } from './services/usersService';
 
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
   const [artworks, setArtworks] = useState([]);
   const [navTotal, setNavTotal] = useState(0); 
   const [artistsInfo, setArtistsInfo] = useState([]);
+
+  const [usersInfo, setUsersInfo] = useState([]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -64,8 +67,19 @@ function App() {
           ...verified_artist,
           favorites: [],
         })));
-        setArtistsInfo([...verifiedArtistsWithFavorites]);
+        setArtistsInfo([...verifiedArtistsWithFavorites]);        
       })
+      .catch((error) => console.error('Error al obtener los artistas verificados:', error));
+
+      getUsers().
+      then((data) => {
+        const usersWithFavorites = data.map((user => ({
+          ...user,
+          favorites: [],
+        })));
+        setUsersInfo([...usersWithFavorites]);        
+      })
+      .catch((error) => console.error('Error al obtener los usuarios:', error));
     
   }, []);
 
@@ -86,12 +100,12 @@ function App() {
   //   setArtworks([...dataArtworks.artworks]);
   // };
 
-  const dataArtists = async () => {
-    const responseData = await fetch(endpointArtists);
-    const data = await responseData.json();
-    data.artists.map(element => element.favorites = []);
-    setArtistsInfo([...data.artists]);
-  };
+  // const dataArtists = async () => {
+  //   const responseData = await fetch(endpointArtists);
+  //   const data = await responseData.json();
+  //   data.artists.map(element => element.favorites = []);
+  //   setArtistsInfo([...data.artists]);
+  // };
 
   const updatingNavTotal = () => {
     //CALCULA EL VALOR TOTAL DEL CARRITO
