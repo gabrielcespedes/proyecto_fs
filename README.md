@@ -23,7 +23,6 @@ BODY: {
 
 POST: localhost:3000/auth/login
 BODY: {
-"username": "test",
 "email": "test@mail.com",
 "password": "test"
 }
