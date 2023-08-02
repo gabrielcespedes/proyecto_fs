@@ -61,7 +61,7 @@ const RegisterView = () => {
                         />
                     </Form.Group>
 
-                    <Button className="mb-3" variant="primary" type="submit">
+                    <Button className="mb-3" variant="dark" type="submit">
                         Registrarse
                     </Button>
                 </Form>

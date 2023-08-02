@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Card, Container, Row, Col } from 'react-bootstrap';
+import {Card, Container} from 'react-bootstrap';
 import CardGroup from 'react-bootstrap/CardGroup'
 import UserCard from '../components/UserCard';
 
