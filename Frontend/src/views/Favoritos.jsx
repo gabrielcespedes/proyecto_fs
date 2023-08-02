@@ -10,13 +10,13 @@ const Favoritos = () => {
     return (
         <div className="row w-100 my-5">
             {artworks.filter((elemento) => {
-                if (user.favorites.includes(elemento.id)) {
+                if (user.favorites.includes(elemento.product_id)) {
                     return elemento;                    
                 }}).map(
                 (element, index) => (
                     <div key={index} className='col-12 col-md-6 col-xl-3'>
                         <div className='card m-auto my-4 tarjeta'>
-                            <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img>
+                            <img onClick={() => navigate(`/artwork/${element.product_id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img>
                             <div className="card-body">
                                 <h5>{element.title}</h5>
                                 <hr></hr>
