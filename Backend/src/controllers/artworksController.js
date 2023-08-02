@@ -20,12 +20,21 @@ const one = async (req, res) => {
 };
 
 //VERIFICAR SI LA URL AL CREAR EL PRODUCTO TENDRA EL ID DEL VENDEDOR PARA USAR EL PARAMS
+// const create = async (req, res) => {
+//     try {
+//         const product = await createProduct(req.params.id, req.body);
+//         res.json(product);
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// };
+
 const create = async (req, res) => {
     try {
-        const product = await createProduct(req.params.id, req.body);
+        const product = await createProduct(req.body);
         res.json(product);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({error: error.message});
     }
 };
 

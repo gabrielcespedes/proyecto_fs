@@ -7,8 +7,8 @@ const register = async (req, res) => {
         const originalPassword = req.body.password;
         const hashedPassword = await bcrypt.hash(originalPassword, 10);
         req.body.password = hashedPassword;
-        const {username, email, password} = req.body;
-        const user = await createUser(username, email, password);
+        // const {username, email, password} = req.body;
+        const user = await createUser(req.body);
         if (!user) {
         throw new Error('No se pudo crear el usuario');
         }
@@ -32,7 +32,7 @@ const login = async (req, res) => {
 
         if (match) {
         const token = jwt.sign(
-            { email: user.email, id: user.id },
+            { email: user.email, user_id: user.user_id },
             process.env.JWT_SECRET
         );
         //ES NECESARIA UNA RESPUESTA PARA DESPLEGAR EL NOMBRE DEL USUARIO?

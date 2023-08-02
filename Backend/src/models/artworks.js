@@ -20,7 +20,7 @@ const getProductById = async (id) => {
     }
 };
 
-const createProduct = async (seller_id, product) => {
+const createProduct = async (product) => {
     const query =
       'INSERT INTO products (title, description, price, url_image, seller_id) VALUES ($1, $2, $3, $4, $5) RETURNING *';
     try {
@@ -29,9 +29,9 @@ const createProduct = async (seller_id, product) => {
             product.description,
             product.price,
             product.url_image,
-            seller_id
+            product.seller_id,
         ]);
-        return response.rows[0];
+        return response.rows;
     } catch (error) {
         throw new Error(error);
     }

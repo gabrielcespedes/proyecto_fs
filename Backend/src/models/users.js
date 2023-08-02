@@ -41,12 +41,12 @@ const getUserByEmail = async (email) => {
 };
 
 
-const createUser = async (username, email, password) => {
+const createUser = async (user) => {
     const query =
       'INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *';
     try {
-        const response = await pool.query(query, [username, email, password]);
-        return response.rows[0];
+        const response = await pool.query(query, [user.username, user.email, user.password]);
+        return response.rows;
     } catch (error) {
         throw new Error(error);
     }
