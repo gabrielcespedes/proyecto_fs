@@ -8,7 +8,7 @@ import CarouselImages from '../components/Carousel';
 import Heart from '../components/Heart';
 
 const Home = () => {
-    const { artworks, setArtworks, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, user} = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, user, usersInfo, setUsersInfo} = useContext(MyContext);
     const navigate = useNavigate();
 
     const Add_Click = (id) => {
@@ -19,27 +19,26 @@ const Home = () => {
     }
 
     const Heart_Click = (id, user_id) => {
-        const img_index = artworks.findIndex((img) => img.product_id == id);
-        const artist_index = artistsInfo.findIndex((e) => e.user_id == user_id);        
-        const favoritos = artistsInfo[artist_index].favorites;
+        const usersInfo_index = usersInfo.findIndex((e) => e.user_id == user_id);        
+        const favoritos = usersInfo[usersInfo_index].favorites;
         const imageToRemoveIndex = favoritos.indexOf(id);
 
         if (imageToRemoveIndex == -1) {
-            artistsInfo[artist_index].favorites.push(id);
-            setArtistsInfo([...artistsInfo]);
+            usersInfo[usersInfo_index].favorites.push(id);
+            setUsersInfo([...usersInfo]);
         } else {
-            artistsInfo[artist_index].favorites.splice(imageToRemoveIndex, 1);
-            setArtistsInfo([...artistsInfo]);
+            usersInfo[usersInfo_index].favorites.splice(imageToRemoveIndex, 1);
+            setUsersInfo([...usersInfo]);
         }
         
-        console.log(artistsInfo);
+        console.log(usersInfo);
 
         
     }
 
     const Evaluate_Heart = (id, user_id) => {
-        const artist_index = artistsInfo.findIndex((e) => e.user_id == user_id);        
-        const favoritos = artistsInfo[artist_index].favorites;
+        const usersInfo_index = usersInfo.findIndex((e) => e.user_id == user_id);        
+        const favoritos = usersInfo[usersInfo_index].favorites;
         if (favoritos.includes(id)) {
             return true;
         } else {

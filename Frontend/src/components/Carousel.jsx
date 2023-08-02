@@ -53,7 +53,7 @@ const CarouselImages = () => {
                                 <img
                                 className="d-block w-100 image"
                                 key={index}
-                                onClick={() => navigate(`/artwork/${element.id}`)}
+                                onClick={() => navigate(`/artwork/${element.product_id}`)}
                                 src={element.url_image}
                                 height="400"
                                 alt="First slide"/>

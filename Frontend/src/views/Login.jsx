@@ -7,7 +7,7 @@ import MyContext from "../my_context";
 const LoginView = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { artistsInfo, isLoggedIn, setIsLoggedIn, user, setUser } = useContext(MyContext);
+    const { usersInfo, isLoggedIn, setIsLoggedIn, user, setUser } = useContext(MyContext);
 
     // Agregar aquí la lógica para manejar el envío del formulario
     const handleSubmit = (e) => {
@@ -17,7 +17,7 @@ const LoginView = () => {
         console.log('Password:', password);
 
         // Verificar las credenciales ingresadas con el JSON de artistas
-        const foundUser = artistsInfo.find((artist) => artist.email === email && artist.password === password);
+        const foundUser = usersInfo.find((user) => user.email === email && user.password === password);
 
         if (foundUser) {
             setIsLoggedIn(true);
