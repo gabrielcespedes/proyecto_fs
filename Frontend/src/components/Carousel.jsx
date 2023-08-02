@@ -31,8 +31,8 @@ const CarouselImages = () => {
                                 <img
                                 className="d-block w-100 image"
                                 key={index}
-                                onClick={() => navigate(`/artist/${element.user_id}`)}
-                                src={element.user_image}
+                                onClick={() => navigate(`/artist/${element.artist_id}`)}
+                                src={element.artist_image}
                                 height="400"
                                 alt="First slide"/>
                             <Carousel.Caption style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '10px' }}>

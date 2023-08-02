@@ -4,13 +4,20 @@ import { useContext } from "react";
 import MyContext from "../my_context";
 
 const Navbar = () => {
-    const {navTotal, setNavTotal, isLoggedIn, setIsLoggedIn, setUser} = useContext(MyContext);
+    const {navTotal, setNavTotal, isLoggedIn, setIsLoggedIn, setUser, artworks, setArtworks} = useContext(MyContext);
 
     const Exit = () => {
         setIsLoggedIn(false);
         setUser(null);
         setNavTotal(0);
-    }
+
+        const resertArtworks = artworks.map((element) => ({
+            ...element,
+            amount: 0,
+        }));
+
+        setArtworks([...resertArtworks]);
+    };
 
         
     return isLoggedIn ? (

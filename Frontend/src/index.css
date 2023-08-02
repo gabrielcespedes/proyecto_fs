@@ -22,6 +22,12 @@ code {
   cursor: pointer;
 }
 
+.image_no_pointer {
+  height: 400px ;
+  object-fit: contain;
+  cursor: default;
+}
+
 .fondo {
   background-color: gainsboro;
 

@@ -27,6 +27,7 @@ import Busqueda from './views/Busqueda';
 import DetailArtist from './views/DetailArtist';
 
 import { getArtworks } from './services/artworksService';
+import { getVerifiedArtists } from './services/artistService';
 
 
 function App() {
@@ -56,15 +57,25 @@ function App() {
         setArtworks([...artworksWithAmount]);
       })
       .catch((error) => console.error('Error al obtener las obras de arte:', error));
+    
+    getVerifiedArtists().
+      then((data) => {
+        const verifiedArtistsWithFavorites = data.map((verified_artist => ({
+          ...verified_artist,
+          favorites: [],
+        })));
+        setArtistsInfo([...verifiedArtistsWithFavorites]);
+      })
+    
   }, []);
 
 
   ///////////////////////////////
 
-  useEffect(() => {
-    // dataArtworks();
-    dataArtists();
-  }, [])
+  // useEffect(() => {
+  //   dataArtworks();
+  //   dataArtists();
+  // }, [])
 
   
 

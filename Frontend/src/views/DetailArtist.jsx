@@ -11,7 +11,7 @@ const DetailArtist = () => {
     const {id} = useParams();
     const navigate = useNavigate();
 
-    const artistIndex = artistsInfo.findIndex((element) => element.user_id == id);
+    const artistIndex = artistsInfo.findIndex((element) => element.artist_id == id);
 
     const artistCollection = artworks.filter((element) => element.seller_id == id);
 
@@ -23,7 +23,7 @@ const DetailArtist = () => {
         <Row xs={1} md={2} lg={2}>
             <Col>
             <Card>
-                <Card.Img className="image" src={artistsInfo[artistIndex].user_image}></Card.Img>
+                <Card.Img className="image_no_pointer" src={artistsInfo[artistIndex].artist_image}></Card.Img>
             </Card>
             </Col>
             <Col>
@@ -40,8 +40,8 @@ const DetailArtist = () => {
                 {
                     artistCollection.map((element, index) => (
                         <Card 
-                        className="bg-light text-white p-2"
-                        onClick={() => navigate(`/artwork/${element.id}`)}>
+                        className="bg-light text-white p-2 heart_pointer"
+                        onClick={() => navigate(`/artwork/${element.product_id}`)}>
                         <Card.Img 
                         key={index}
                         variant="top"
