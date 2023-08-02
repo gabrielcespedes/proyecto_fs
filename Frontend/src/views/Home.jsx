@@ -12,14 +12,14 @@ const Home = () => {
     const navigate = useNavigate();
 
     const Add_Click = (id) => {
-        const artwork_index = artworks.findIndex((element) => element.id === id);
+        const artwork_index = artworks.findIndex((element) => element.product_id === id);
         artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
         setArtworks([...artworks]);
         setNavTotal(updatingNavTotal);
     }
 
     const Heart_Click = (id, user_id) => {
-        const img_index = artworks.findIndex((img) => img.id == id);
+        const img_index = artworks.findIndex((img) => img.product_id == id);
         const artist_index = artistsInfo.findIndex((e) => e.user_id == user_id);        
         const favoritos = artistsInfo[artist_index].favorites;
         const imageToRemoveIndex = favoritos.indexOf(id);
@@ -56,15 +56,15 @@ const Home = () => {
                         <div key={index} className='col-12 col-md-6 col-xl-3'>
                             <div className='card m-auto my-4 tarjeta'>
                                 {/* <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img> */}
-                                <div className="foto" style={{backgroundImage: `url(${element.url_image})`}} onClick={() => navigate(`/artwork/${element.id}`)} >                                                                     
+                                <div className="foto" style={{backgroundImage: `url(${element.url_image})`}} onClick={() => navigate(`/artwork/${element.seller_id}`)} >                                                                     
                                 </div>                                
                                 <div className="card-body">
-                                    <h5 className="d-flex justify-content-between">{element.title} {user != null && <Heart filled={Evaluate_Heart(element.id, user.user_id)} onClick={() => Heart_Click(element.id, user.user_id)}></Heart>
+                                    <h5 className="d-flex justify-content-between">{element.title} {user != null && <Heart filled={Evaluate_Heart(element.product_id, user.user_id)} onClick={() => Heart_Click(element.product_id, user.user_id)}></Heart>
                                     }   </h5>
                                     <hr></hr>
                                     <p>{element.description}</p>
                                     <div className="d-flex justify-content-around">
-                                        <button onClick={() => Add_Click(element.id)} className="btn btn-secondary">Añadir <i class="fa-solid fa-cart-shopping"></i></button>
+                                        <button onClick={() => Add_Click(element.product_id)} className="btn btn-secondary">Añadir <i class="fa-solid fa-cart-shopping"></i></button>
                                         <button className="btn" >Value: ${element.price}</button>
                                     </div>
                                 </div>

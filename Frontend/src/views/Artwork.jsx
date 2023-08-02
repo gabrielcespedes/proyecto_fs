@@ -20,8 +20,8 @@ const Artwork = () => {
         }
     };
 
-    let selectedArtwork = artworks[artworks.findIndex((element) => element.id == id)];
-    let artist = artistsInfo[artistsInfo.findIndex((e) => e.user_id == selectedArtwork.artist_id)];
+    let selectedArtwork = artworks[artworks.findIndex((element) => element.product_id == id)];
+    let artist = artistsInfo[artistsInfo.findIndex((e) => e.user_id == selectedArtwork.seller_id)];
     const addingAmount = () => {
         selectedArtwork.amount += count;
         setNavTotal(updatingNavTotal);

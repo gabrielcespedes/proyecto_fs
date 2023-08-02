@@ -13,7 +13,7 @@ const DetailArtist = () => {
 
     const artistIndex = artistsInfo.findIndex((element) => element.user_id == id);
 
-    const artistCollection = artworks.filter((element) => element.artist_id == id);
+    const artistCollection = artworks.filter((element) => element.seller_id == id);
 
     
 

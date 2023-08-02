@@ -8,7 +8,7 @@ import MyContext from "../my_context";
 
 const UserViewBuyer = ({ user }) => {
     const { artistsInfo, artworks, setArtworks } = useContext(MyContext);
-    const artistCollection = artworks.filter((element) => element.artist_id == user.user_id);
+    const artistCollection = artworks.filter((element) => element.seller_id == user.user_id);
 
     const [input_title, setInput_title] = useState('');
     const [input_description, setInput_description] = useState('');
@@ -22,14 +22,19 @@ const UserViewBuyer = ({ user }) => {
         setInput_description(e.target.value);
     }
     const handleInput_price = (e) => {
-        setInput_price(Number(e.target.value));
+        const value = Number(e.target.value);
+        if (!isNaN(value)) {
+            setInput_price(value);
+        } else {
+            setInput_price(0);
+        }        
     }
     const handleInput_url_image = (e) => {
         setInput_url_image(e.target.value);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        setArtworks([...artworks, {id: artworks.length + 1, title: input_title, description: input_description, price: input_price, url_image: input_url_image, artist_id: user.user_id, amount: 0}])
+        setArtworks([...artworks, {product_id: artworks.length + 1, title: input_title, description: input_description, price: input_price, url_image: input_url_image, seller_id: user.user_id, amount: 0}])
         setInput_title('');
         setInput_description('');
         setInput_price(0);
@@ -74,12 +79,13 @@ const UserViewBuyer = ({ user }) => {
                         <button className='btn btn-dark mb-2'>Agregar obra</button>
                     </form>
                     {console.log(artworks)}
-                </Card>                                
-                <Row>
+                </Card>
+                {/* Para implementarlo a futuro*/}
+                {/* <Row>
                 <Col xs={12} md={12}>
                     <UserCard user={user} />
                 </Col>
-                </Row>
+                </Row> */}
             </Container>            
         </Container>
     );
