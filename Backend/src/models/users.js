@@ -2,19 +2,19 @@ const pool = require('../config/pool');
 
 
 const getUserById = async (id) => {
-    const query = 'SELECT * FROM $1 WHERE user_id = $2';
+    const query = 'SELECT * FROM users WHERE user_id = $1';
     try {
-        const response = await pool.query(query, [table, id]);
+        const response = await pool.query(query, [id]);
         return response.rows[0];
     } catch (error) {
         throw new Error(error);
     }
 };
 //SERVIRIA PARA BUSCAR EL PERFIL DE ALGUN VENDEDOR O ARTISTA SEGUN EL NOMBRE DEPENDIENDO SI ES TABLA verified_artists o users
-const getUserByUsername = async (table, username) => {
-    const query = 'SELECT * FROM $1 WHERE username = $2';
+const getUserByUsername = async (username) => {
+    const query = 'SELECT * FROM users WHERE username = $1';
     try {
-        const response = await pool.query(query, [table, username]);
+        const response = await pool.query(query, [username]);
         return response.rows[0];
     } catch (error) {
         throw new Error(error);
