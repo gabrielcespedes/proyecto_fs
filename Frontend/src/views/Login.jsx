@@ -9,7 +9,12 @@ import axios from "axios";
 const LoginView = () => {
     const { usersInfo, isLoggedIn, setIsLoggedIn, user, setUser } = useContext(MyContext);
 
-    const [usuarioLocal, setUsuarioLocal] = useState({});
+    const [usuarioLocal, setUsuarioLocal] = useState({
+        email: "",
+        password: ""
+    });
+
+    
 
     // // VERSION SOLO FRONTEND - Agregar aquí la lógica para manejar el envío del formulario
     // const handleSubmit = (e) => {
@@ -45,9 +50,9 @@ const LoginView = () => {
             const { data: token } = await axios.post(urlServer + endpoint, usuarioLocal);
             alert("Usuario identificado con éxito.");
             localStorage.setItem("token", token);
-            const foundUser = usersInfo.find((element) => element.email === email);
-            setUser(foundUser);
-            console.log(usuarioLocal);
+            // const foundUser = usersInfo.find((element) => element.email === email);
+            // setUser(foundUser);
+            setUser(usuarioLocal);
             setIsLoggedIn(true);           
         }   catch ({ response: { data: message } }) {
             alert("Credenciales inválidas");

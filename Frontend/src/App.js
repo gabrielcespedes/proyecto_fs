@@ -61,8 +61,8 @@ function App() {
       })
       .catch((error) => console.error('Error al obtener las obras de arte:', error));
     
-    getVerifiedArtists().
-      then((data) => {
+    getVerifiedArtists()
+      .then((data) => {
         const verifiedArtistsWithFavorites = data.map((verified_artist => ({
           ...verified_artist,
           favorites: [],
@@ -71,16 +71,15 @@ function App() {
       })
       .catch((error) => console.error('Error al obtener los artistas verificados:', error));
 
-      getUsers().
-      then((data) => {
+    getUsers()
+      .then((data) => {
         const usersWithFavorites = data.map((user => ({
           ...user,
           favorites: [],
         })));
         setUsersInfo([...usersWithFavorites]);        
       })
-      .catch((error) => console.error('Error al obtener los usuarios:', error));
-    
+      .catch((error) => console.error('Error al obtener los usuarios:', error));    
   }, []);
 
 

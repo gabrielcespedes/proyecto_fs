@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import UserViewBuyer from './UserViewBuyer';
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import MyContext from '../my_context';
 
 const RegisterView = () => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isRegistered, setIsRegistered] = useState(false); // Nuevo estado para el registro exitoso
+
+    const { setUser } = useContext(MyContext);
+    
+    
 
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState({});
@@ -36,7 +41,7 @@ const RegisterView = () => {
         const endpoint = "/auth/register";
         try {
             await axios.post(urlServer + endpoint, usuario);
-            alert("Usuario registrado con éxito");
+            alert("Usuario registrado con éxito");            
             navigate("/Login");
         }   catch (error) {
             alert("Algo salió mal.");
