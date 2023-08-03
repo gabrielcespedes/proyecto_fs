@@ -87,7 +87,7 @@ const LoginView = () => {
                     />
                 </div>
 
-                <button onClick={iniciarSesion} className="mb-3" variant="dark" type="submit">
+                <button onClick={iniciarSesion} className="btn btn-dark mb-3" type="submit">
                     Iniciar Sesión
                 </button>
             </div>
