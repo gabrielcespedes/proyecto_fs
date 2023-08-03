@@ -6,6 +6,7 @@ const authRoutes = require('./src/routes/authRoutes');
 const userRoutes = require('./src/routes/userRoutes');
 const artworksRoutes = require('./src/routes/artworksRoutes');
 const verifiedArtistsRoutes = require('./src/routes/verifiedArtistsRoutes');
+const cartRoutes = require('./src/routes/cartRoutes');
 const app = express();
 
 app.use(cors());
@@ -25,5 +26,6 @@ app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/artworks', artworksRoutes);
 app.use('/artist', verifiedArtistsRoutes);
+app.use('/cart', cartRoutes);
 
 module.exports = app;

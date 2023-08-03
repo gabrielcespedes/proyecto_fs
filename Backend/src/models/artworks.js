@@ -63,21 +63,11 @@ const deleteProduct = async (id) => {
     }
 };
 
-const getCartInfoByID = async (id) => {
-    const query = 'SELECT * FROM shoppingcart WHERE cart_id = $1';
-    try {
-        const response = await pool.query(query, [id]);
-        return response.rows[0];
-    } catch (error) {
-        throw new Error(error);
-    }
-};
 
 module.exports = {
     getProducts,
     getProductById,
     createProduct,
     updateProduct,
-    deleteProduct,
-    getCartInfoByID
+    deleteProduct
 };

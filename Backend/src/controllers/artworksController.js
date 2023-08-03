@@ -1,4 +1,4 @@
-const {getProducts, getProductById, createProduct, updateProduct, deleteProduct, getCartInfoByID} = require('../models/artworks');
+const {getProducts, getProductById, createProduct, updateProduct, deleteProduct} = require('../models/artworks');
 
 
 const all = async (req, res) => {
@@ -51,15 +51,6 @@ const destroy = async (req, res) => {
     try {
         const product = await deleteProduct(req.params.id);
         res.json(product);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
-
-const cartInfoByID = async (req, res) => {
-    try {
-        const products = await getCartInfoByID(req.params.id);
-        res.json(products);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
