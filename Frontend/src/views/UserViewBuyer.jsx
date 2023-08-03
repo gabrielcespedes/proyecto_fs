@@ -23,7 +23,23 @@ const UserViewBuyer = ({ user }) => {
         try {
             const artworkWithSeller = {...artworkData, seller_id: user.user_id};
             const addedArtwork = await addArtwork(artworkWithSeller, token);
-            setArtworks([...artworks, addedArtwork ]);
+
+            // addedArtwork.amount = 0;
+
+            artworkWithSeller.amount = 0;
+
+            setArtworks([...artworks, artworkWithSeller ]);
+
+            console.log(addedArtwork);
+
+            // probando
+            setArtworkData({
+                title: '',
+                description: '',
+                price: 0,
+                url_image: '',        
+            });
+
         } catch (error) {
             //Manejo Errores
         }
