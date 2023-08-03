@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Card, Container} from 'react-bootstrap';
 import CardGroup from 'react-bootstrap/CardGroup'
-import UserCard from '../components/UserCard';
+// import UserCard from '../components/UserCard';
 
 import { useContext } from "react";
 import MyContext from "../my_context";
