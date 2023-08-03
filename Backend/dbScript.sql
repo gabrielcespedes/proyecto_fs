@@ -37,7 +37,7 @@ CREATE TABLE shoppingcarts (
     shoppingcart_id SERIAL PRIMARY KEY,
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-)
+);
 
 DROP TABLE IF EXISTS details_shoppingcart;
 CREATE TABLE details_shoppingcart (
@@ -51,6 +51,27 @@ CREATE TABLE details_shoppingcart (
     FOREIGN KEY (product_id) REFERENCES products(product_id),
     FOREIGN KEY (shoppingcart_id) REFERENCES shoppingcarts(shoppingcart_id)
 );
+
+CREATE TABLE cart_example (    
+    user_id INT,
+    product_id INT,
+    price INT,
+    quantity INT NOT NULL CHECK (quantity >= 0),
+    paid boolean DEFAULT false,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+INSERT INTO cart_example (user_id, product_id, price, quantity) VALUES
+(2, 1, 9900, 3),
+(1, 3, 5700, 2),
+(2, 2, 8000, 4),
+(1, 1, 9900, 1),
+(3, 1, 9900, 2),
+(2, 4, 11900, 4);
+
+
+
+
 
 DROP TABLE IF EXISTS favorites;
 CREATE TABLE favorites (
