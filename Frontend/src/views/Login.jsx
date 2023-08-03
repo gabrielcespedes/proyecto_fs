@@ -50,9 +50,12 @@ const LoginView = () => {
             const { data: token } = await axios.post(urlServer + endpoint, usuarioLocal);
             alert("Usuario identificado con éxito.");
             localStorage.setItem("token", token);
-            // const foundUser = usersInfo.find((element) => element.email === email);
-            // setUser(foundUser);
-            setUser(usuarioLocal);
+            
+            const foundUser = usersInfo.find((element) => element.email === email);
+            setUser(foundUser);
+
+            //setUser(usuarioLocal);
+            
             setIsLoggedIn(true);           
         }   catch ({ response: { data: message } }) {
             alert("Credenciales inválidas");

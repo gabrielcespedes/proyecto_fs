@@ -12,7 +12,7 @@ const RegisterView = () => {
     const [password, setPassword] = useState('');
     const [isRegistered, setIsRegistered] = useState(false); // Nuevo estado para el registro exitoso
 
-    const { setUser } = useContext(MyContext);
+    const { setUser, setUsersInfo } = useContext(MyContext);
     
     
 
@@ -41,8 +41,14 @@ const RegisterView = () => {
         const endpoint = "/auth/register";
         try {
             await axios.post(urlServer + endpoint, usuario);
-            alert("Usuario registrado con éxito");            
+            alert("Usuario registrado con éxito");     
+
             navigate("/Login");
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
+
         }   catch (error) {
             alert("Algo salió mal.");
             console.log(error);
