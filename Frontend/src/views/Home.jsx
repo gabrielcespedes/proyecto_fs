@@ -54,7 +54,6 @@ const Home = () => {
                     (element, index) => (
                         <div key={index} className='col-12 col-md-6 col-xl-3'>
                             <div className='card m-auto my-4 tarjeta'>
-                                {/* <img onClick={() => navigate(`/artwork/${element.id}`)} src={element.url_image} alt="imagen obra" className="card-img-top"></img> */}
                                 <div className="foto" style={{backgroundImage: `url(${element.url_image})`}} onClick={() => navigate(`/artwork/${element.seller_id}`)} >                                                                     
                                 </div>                                
                                 <div className="card-body">
