@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserViewBuyer from './UserViewBuyer';
 import MyContext from "../my_context";
@@ -7,13 +7,11 @@ import MyContext from "../my_context";
 import axios from "axios";
 
 const LoginView = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const { usersInfo, isLoggedIn, setIsLoggedIn, user, setUser } = useContext(MyContext);
 
     const [usuarioLocal, setUsuarioLocal] = useState({});
 
-    // // Agregar aquí la lógica para manejar el envío del formulario
+    // // VERSION SOLO FRONTEND - Agregar aquí la lógica para manejar el envío del formulario
     // const handleSubmit = (e) => {
     //     e.preventDefault();
     //     // Lógica de inicio de sesión
