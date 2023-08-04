@@ -32,7 +32,7 @@ import { getUsers } from './services/usersService';
 
 
 function App() {
-  const endpointArtists = "/artistsDB.json";
+  // const endpointArtists = "/artistsDB.json";
   const [artworks, setArtworks] = useState([]);
   const [navTotal, setNavTotal] = useState(0); 
   const [artistsInfo, setArtistsInfo] = useState([]);
