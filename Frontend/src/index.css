@@ -61,3 +61,14 @@ code {
 .heart_pointer {
   cursor: pointer;
 }
+
+.heart_pointer:not(.filled) path {
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.heart_pointer.filled path {
+  fill: red;
+  stroke: none;
+}
