@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import MyContext from "../my_context";
 
 const Favoritos = () => {
-    const { artworks, setArtworks, user} = useContext(MyContext);
+    const { artworks, user} = useContext(MyContext);
     
     const navigate = useNavigate();
 

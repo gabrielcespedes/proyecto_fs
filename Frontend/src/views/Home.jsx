@@ -8,7 +8,7 @@ import CarouselImages from '../components/Carousel';
 import Heart from '../components/Heart';
 
 const Home = () => {
-    const { artworks, setArtworks, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, user, usersInfo, setUsersInfo} = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, usersInfo, setUsersInfo} = useContext(MyContext);
     const navigate = useNavigate();
 
     const Add_Click = (id) => {
@@ -29,11 +29,7 @@ const Home = () => {
         } else {
             usersInfo[usersInfo_index].favorites.splice(imageToRemoveIndex, 1);
             setUsersInfo([...usersInfo]);
-        }
-        
-        console.log(usersInfo);
-
-        
+        }       
     }
 
     const Evaluate_Heart = (id, user_id) => {

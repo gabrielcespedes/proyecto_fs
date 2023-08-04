@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, ListGroup } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 const CommentItem = ({ comment }) => {
     return (

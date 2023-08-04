@@ -22,19 +22,13 @@ const UserViewBuyer = ({ user }) => {
     const handleAddArtwork = async () => {
         try {
             const artworkWithSeller = {...artworkData, seller_id: user.user_id};
-            const addedArtwork = await addArtwork(artworkWithSeller, token);
-
-            console.log(addedArtwork);
+            const addedArtwork = await addArtwork(artworkWithSeller, token);           
 
             // addedArtwork.amount = 0;
 
             artworkWithSeller.amount = 0;
-
             artworkWithSeller.product_id = addedArtwork[0].product_id;
-
-            setArtworks([...artworks, artworkWithSeller ]);
-
-            
+            setArtworks([...artworks, artworkWithSeller ]);            
 
             // probando
             setArtworkData({
@@ -66,7 +60,7 @@ const UserViewBuyer = ({ user }) => {
         }));        
     };
 
-    const { artistsInfo, artworks, setArtworks } = useContext(MyContext);
+    const { artworks, setArtworks } = useContext(MyContext);
     const artistCollection = artworks.filter((element) => element.seller_id == user.user_id);
 
     // const [input_title, setInput_title] = useState('');
@@ -99,8 +93,6 @@ const UserViewBuyer = ({ user }) => {
     //     setInput_price(0);
     //     setInput_url_image('');
     // }
-
-    console.log('Datos de usuario:', user);
     return (
         <Container className='d-flex align-items-center flex-column vh-100 mt-5 mb-3 pt-5'>
             <h2>Bienvenido, {user.username}</h2>

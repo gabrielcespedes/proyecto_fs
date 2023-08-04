@@ -1,24 +1,21 @@
-import React, { useContext, useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
-import UserViewBuyer from './UserViewBuyer';
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
+// import UserViewBuyer from './UserViewBuyer';
 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import MyContext from '../my_context';
+// import MyContext from '../my_context';
 
 const RegisterView = () => {
-    const [fullName, setFullName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [isRegistered, setIsRegistered] = useState(false); // Nuevo estado para el registro exitoso
+    // const [fullName, setFullName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [isRegistered, setIsRegistered] = useState(false); 
 
-    const { setUser, setUsersInfo } = useContext(MyContext);
-    
-    
+    // const { setUser, setUsersInfo } = useContext(MyContext);   
 
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState({});
-
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();

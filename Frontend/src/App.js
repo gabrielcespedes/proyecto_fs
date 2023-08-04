@@ -9,7 +9,6 @@ import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 import UserViewBuyer from './views/UserViewBuyer';
 
-
 import Home from './views/Home';
 import Carrito from './views/Carrito';
 import Artwork from './views/Artwork';
@@ -17,19 +16,12 @@ import NotFound from "./views/NotFound.jsx";
 import Registro from "./views/Registro.jsx";
 import Login from "./views/Login.jsx";
 import Favoritos from "./views/Favoritos";
-
 import Busqueda from './views/Busqueda';
-
-/* import UserCard from './components/UserCard'; */
-
-
-
 import DetailArtist from './views/DetailArtist';
 
 import { getArtworks } from './services/artworksService';
 import { getVerifiedArtists } from './services/artistService';
 import { getUsers } from './services/usersService';
-
 
 function App() {
   // const endpointArtists = "/artistsDB.json";
@@ -40,9 +32,7 @@ function App() {
   const [usersInfo, setUsersInfo] = useState([]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
-
-  // Conexión Backend - Frontend
+  const [user, setUser] = useState(null); 
 
   // useEffect(() => {    
   //   getArtworks()
@@ -82,15 +72,10 @@ function App() {
       .catch((error) => console.error('Error al obtener los usuarios:', error));    
   }, []);
 
-
-  ///////////////////////////////
-
   // useEffect(() => {
   //   dataArtworks();
   //   dataArtists();
   // }, [])
-
-  
 
   // const dataArtworks = async () => {
   //   const responseData = await fetch(endpoint);
@@ -132,10 +117,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Profile" element={UserViewBuyer} />
           <Route path="*" element={<NotFound />} />
-
-
           <Route path='/artist/:id' element={<DetailArtist />} />
-
         </Routes>
         <Footer />                  
       </BrowserRouter>  

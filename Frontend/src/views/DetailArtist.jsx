@@ -12,11 +12,7 @@ const DetailArtist = () => {
     const navigate = useNavigate();
 
     const artistIndex = artistsInfo.findIndex((element) => element.artist_id == id);
-
     const artistCollection = artworks.filter((element) => element.seller_id == id);
-
-    
-
 
     return (
         <Container className="border p-3 m-4  mt-5">
@@ -36,7 +32,6 @@ const DetailArtist = () => {
         <Container className="pt-3">
             <h1 className="text-center h3">Obras del artista</h1>
             <CardGroup>
-
                 {
                     artistCollection.map((element, index) => (
                         <Card 
