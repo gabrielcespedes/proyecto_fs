@@ -54,7 +54,7 @@ const Home = () => {
                     (element, index) => (
                         <div key={index} className='col-12 col-md-6 col-xl-3'>
                             <div className='card m-auto my-4 tarjeta'>
-                                <div className="foto" style={{backgroundImage: `url(${element.url_image})`}} onClick={() => navigate(`/artwork/${element.seller_id}`)} >                                                                     
+                                <div className="foto" style={{backgroundImage: `url(${element.url_image})`}} onClick={() => navigate(`/artwork/${element.product_id}`)} >                                                                     
                                 </div>                                
                                 <div className="card-body">
                                     <h5 className="d-flex justify-content-between">{element.title} {user != null && <Heart filled={Evaluate_Heart(element.product_id, user.user_id)} onClick={() => Heart_Click(element.product_id, user.user_id)}></Heart>

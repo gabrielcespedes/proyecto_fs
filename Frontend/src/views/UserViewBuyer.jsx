@@ -24,13 +24,17 @@ const UserViewBuyer = ({ user }) => {
             const artworkWithSeller = {...artworkData, seller_id: user.user_id};
             const addedArtwork = await addArtwork(artworkWithSeller, token);
 
+            console.log(addedArtwork);
+
             // addedArtwork.amount = 0;
 
             artworkWithSeller.amount = 0;
 
+            artworkWithSeller.product_id = addedArtwork[0].product_id;
+
             setArtworks([...artworks, artworkWithSeller ]);
 
-            console.log(addedArtwork);
+            
 
             // probando
             setArtworkData({
