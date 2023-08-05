@@ -8,6 +8,12 @@ npm i axios
 
 npm run start
 
+*Backedn:*
+
+cd Backend
+
+npm i nodemon express jsonwebtoken jest supertest bcrypt dotenv pg cors
+
 Probar credenciales de acceso con los datos de **artistsDB.json**
 
 ### Auth: Register
