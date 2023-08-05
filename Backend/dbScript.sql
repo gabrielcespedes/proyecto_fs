@@ -80,7 +80,7 @@ CREATE TABLE favorites (
     product_id INT,
     FOREIGN KEY (product_id) REFERENCES products(product_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-) 
+);
 
 
 
