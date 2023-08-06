@@ -7,7 +7,7 @@ import CarouselImages from '../components/Carousel';
 
 import Heart from '../components/Heart';
 
-import { addFavorite } from "../services/favoritesService";
+import { addFavorite, removeFavorite } from "../services/favoritesService";
 
 const Home = () => {
     const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, usersInfo, setUsersInfo} = useContext(MyContext);
@@ -21,6 +21,15 @@ const Home = () => {
             console.log('Favorito agregado:', result);
         } catch (error) {
             console.error('Error al agregar el favorito:', error);
+        }
+    };
+
+    const handleRemoveFavorite = async (product_id) => {
+        try {
+            const result = await removeFavorite(product_id, token);
+            console.log('Favorito eliminado:', result);
+        } catch (error) {
+            console.error('Error al eliminar el favorito:', error);
         }
     };
 
@@ -45,6 +54,8 @@ const Home = () => {
         } else {
             usersInfo[usersInfo_index].favorites.splice(imageToRemoveIndex, 1);
             setUsersInfo([...usersInfo]);
+
+            handleRemoveFavorite(id);
         }       
     }
 
