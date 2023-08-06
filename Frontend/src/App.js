@@ -22,6 +22,7 @@ import DetailArtist from './views/DetailArtist';
 import { getArtworks } from './services/artworksService';
 import { getVerifiedArtists } from './services/artistService';
 import { getUsers } from './services/usersService';
+import { getFavorites } from './services/favoritesService';
 
 
 function App() {
@@ -34,7 +35,8 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-  const [cartInfo, setCartInfo] = useState([]); 
+  const [cartInfo, setCartInfo] = useState([]);
+  const [favorites, setFavorites] = useState([]); 
 
   // useEffect(() => {    
   //   getArtworks()
@@ -72,7 +74,13 @@ function App() {
         setUsersInfo([...usersWithFavorites]);        
       })
       .catch((error) => console.error('Error al obtener los usuarios:', error));
+    
+    getFavorites()
+      .then((data) => setFavorites(data))
+      .catch((error) => console.log('Error al obtener los favoritos:', error));
   }, []);
+
+  console.log(favorites);
 
   // useEffect(() => {
   //   dataArtworks();
