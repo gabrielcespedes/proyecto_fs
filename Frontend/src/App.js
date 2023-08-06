@@ -23,6 +23,7 @@ import { getArtworks } from './services/artworksService';
 import { getVerifiedArtists } from './services/artistService';
 import { getUsers } from './services/usersService';
 
+
 function App() {
   // const endpointArtists = "/artistsDB.json";
   const [artworks, setArtworks] = useState([]);
@@ -32,7 +33,8 @@ function App() {
   const [usersInfo, setUsersInfo] = useState([]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
+  const [cartInfo, setCartInfo] = useState([]); 
 
   // useEffect(() => {    
   //   getArtworks()
@@ -69,7 +71,7 @@ function App() {
         })));
         setUsersInfo([...usersWithFavorites]);        
       })
-      .catch((error) => console.error('Error al obtener los usuarios:', error));    
+      .catch((error) => console.error('Error al obtener los usuarios:', error));
   }, []);
 
   // useEffect(() => {
@@ -100,7 +102,7 @@ function App() {
     return total
   };
 
-  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, isLoggedIn, setIsLoggedIn, user, setUser, usersInfo, setUsersInfo};
+  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, isLoggedIn, setIsLoggedIn, user, setUser, usersInfo, setUsersInfo, cartInfo, setCartInfo};
 
   return (
     

@@ -12,7 +12,7 @@ const getProductByID = async (product) => {
 
 
 const getCartInfo = async (id) => {
-    const query = 'SELECT users.username, cart_example.product_id, products.title, cart_example.quantity, cart_example.price FROM users INNER JOIN cart_example ON users.user_id = cart_example.user_id INNER JOIN products ON cart_example.product_id = products.product_id WHERE cart_example.user_id = $1';
+    const query = 'SELECT cart_example.product_id, products.title, cart_example.quantity, products.price, products.url_image FROM users INNER JOIN cart_example ON users.user_id = cart_example.user_id INNER JOIN products ON cart_example.product_id = products.product_id WHERE cart_example.user_id = $1';
     try {
         const response = await pool.query(query, [id]);
         return response.rows;
@@ -23,9 +23,9 @@ const getCartInfo = async (id) => {
 
 const addProduct = async (product) => {
     const query =
-      'INSERT INTO cart_example (user_id, product_id, price, quantity) VALUES ($1, $2, $3 , $4) RETURNING *';
+      'INSERT INTO cart_example (user_id, product_id, price, quantity) VALUES ($1, $2, $3, 1) RETURNING *';
     try {
-        const response = await pool.query(query, [product.user_id, product.product_id, product.price, product.quantity]);
+        const response = await pool.query(query, [product.user_id, product.product_id, product.price]);
         return response.rows;
     } catch (error) {
         throw new Error(error);
