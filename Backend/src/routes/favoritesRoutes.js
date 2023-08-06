@@ -5,7 +5,7 @@ const { isAuth } = require('../middlewares/isAuth.middleware');
 const favoritesController = require('../controllers/favoritesController');
 
 router.get('', favoritesController.all);
-router.post('', isAuth, favoritesController.create);
+router.post('/:id', isAuth, favoritesController.create);
 router.delete('/:id', isAuth, favoritesController.destroy);
 
 module.exports = router;

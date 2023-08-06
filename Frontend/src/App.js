@@ -22,6 +22,8 @@ import DetailArtist from './views/DetailArtist';
 import { getArtworks } from './services/artworksService';
 import { getVerifiedArtists } from './services/artistService';
 import { getUsers } from './services/usersService';
+import { getFavorites } from './services/favoritesService';
+
 
 function App() {
   // const endpointArtists = "/artistsDB.json";
@@ -32,7 +34,9 @@ function App() {
   const [usersInfo, setUsersInfo] = useState([]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
+  const [cartInfo, setCartInfo] = useState([]);
+  const [favorites, setFavorites] = useState([]); 
 
   // useEffect(() => {    
   //   getArtworks()
@@ -64,13 +68,74 @@ function App() {
     getUsers()
       .then((data) => {
         const usersWithFavorites = data.map((user => ({
-          ...user,
+          user_id: user.user_id,
+          username: user.username,
+          email: user.email,
           favorites: [],
         })));
         setUsersInfo([...usersWithFavorites]);        
       })
-      .catch((error) => console.error('Error al obtener los usuarios:', error));    
+      .catch((error) => console.error('Error al obtener los usuarios:', error));
+    
+    getFavorites()
+      .then((data) => setFavorites(data))
+      .catch((error) => console.log('Error al obtener los favoritos:', error));
+
   }, []);
+
+  // const detectFavorites = () => {
+  //   if (usersInfo.length === 0 || favorites.length === 0) {
+  //     return;
+  //   }
+
+  //   const usersMap = new Map(usersInfo.map(user => [user.user_id, user]));
+
+  //   favorites.forEach(favorite => {
+  //     const user = usersMap.get(favorite.user_id);
+  //     if (user && user.favorites) {
+  //       user.favorites.push(favorite.product_id);
+  //     }
+  //   });
+
+  //   setUsersInfo(prevUsersInfo =>
+  //     prevUsersInfo.map(user => ({
+  //       ...user,
+  //       favorites: usersMap.get(user.user_id)?.favorites || [],
+  //     }))
+  //   );
+  // };
+
+  // useEffect(() => {
+  //   detectFavorites();
+  // }, [favorites]);
+
+  
+  useEffect(() => {
+    if (usersInfo.length === 0 || favorites.length === 0) {
+      return;
+    }
+  
+    const usersMap = new Map(usersInfo.map(user => [user.user_id, user]));
+  
+    favorites.forEach(favorite => {
+      const user = usersMap.get(favorite.user_id);
+      if (user && user.favorites) {
+        user.favorites.push(favorite.product_id);
+      }
+    });
+  
+    setUsersInfo(prevUsersInfo =>
+      prevUsersInfo.map(user => ({
+        ...user,
+        favorites: usersMap.get(user.user_id)?.favorites || [],
+      }))
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [favorites]);
+  
+
+  console.log(usersInfo);
+  console.log(favorites);
 
   // useEffect(() => {
   //   dataArtworks();
@@ -100,7 +165,7 @@ function App() {
     return total
   };
 
-  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, isLoggedIn, setIsLoggedIn, user, setUser, usersInfo, setUsersInfo};
+  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, isLoggedIn, setIsLoggedIn, user, setUser, usersInfo, setUsersInfo, cartInfo, setCartInfo};
 
   return (
     
