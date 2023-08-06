@@ -11,7 +11,7 @@ const all = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const favorite = await createFavorite(req.body);
+        const favorite = await createFavorite(req.params.id, req.body);
         res.json(favorite);        
     } catch (error) {
         res.status(500).json({error: error.message});

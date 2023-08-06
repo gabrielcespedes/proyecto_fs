@@ -10,12 +10,12 @@ const getFavorites = async () => {
     }
 };
 
-const createFavorite = async (favorite) => {
+const createFavorite = async (id, favorite) => {
     const query = 'INSERT INTO favorites (user_id, product_id) VALUES ($1, $2) RETURNING *';
     try {
         const response = await pool.query(query, [
             favorite.user_id,
-            favorite.product_id
+            id
         ]);
         return response.rows;
     } catch (error) {
