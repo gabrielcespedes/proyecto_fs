@@ -130,6 +130,7 @@ function App() {
         favorites: usersMap.get(user.user_id)?.favorites || [],
       }))
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [favorites]);
   
 
