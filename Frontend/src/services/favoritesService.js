@@ -10,3 +10,23 @@ export const getFavorites = async () => {
         throw error;
     }
 };
+
+export const addFavorite = async (product_id, token) => {
+    try {
+        const response = await axios.post(`http://localhost:3000/favorites/${product_id}`, {}, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('No se pudo agregar el favorito');
+        }
+    } catch(error) {
+        console.error('Error al agregar favorito:', error);
+        throw error;
+    }
+};
