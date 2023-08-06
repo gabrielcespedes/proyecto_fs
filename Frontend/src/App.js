@@ -68,7 +68,9 @@ function App() {
     getUsers()
       .then((data) => {
         const usersWithFavorites = data.map((user => ({
-          ...user,
+          user_id: user.user_id,
+          username: user.username,
+          email: user.email,
           favorites: [],
         })));
         setUsersInfo([...usersWithFavorites]);        
@@ -78,8 +80,60 @@ function App() {
     getFavorites()
       .then((data) => setFavorites(data))
       .catch((error) => console.log('Error al obtener los favoritos:', error));
+
   }, []);
 
+  // const detectFavorites = () => {
+  //   if (usersInfo.length === 0 || favorites.length === 0) {
+  //     return;
+  //   }
+
+  //   const usersMap = new Map(usersInfo.map(user => [user.user_id, user]));
+
+  //   favorites.forEach(favorite => {
+  //     const user = usersMap.get(favorite.user_id);
+  //     if (user && user.favorites) {
+  //       user.favorites.push(favorite.product_id);
+  //     }
+  //   });
+
+  //   setUsersInfo(prevUsersInfo =>
+  //     prevUsersInfo.map(user => ({
+  //       ...user,
+  //       favorites: usersMap.get(user.user_id)?.favorites || [],
+  //     }))
+  //   );
+  // };
+
+  // useEffect(() => {
+  //   detectFavorites();
+  // }, [favorites]);
+
+  
+  useEffect(() => {
+    if (usersInfo.length === 0 || favorites.length === 0) {
+      return;
+    }
+  
+    const usersMap = new Map(usersInfo.map(user => [user.user_id, user]));
+  
+    favorites.forEach(favorite => {
+      const user = usersMap.get(favorite.user_id);
+      if (user && user.favorites) {
+        user.favorites.push(favorite.product_id);
+      }
+    });
+  
+    setUsersInfo(prevUsersInfo =>
+      prevUsersInfo.map(user => ({
+        ...user,
+        favorites: usersMap.get(user.user_id)?.favorites || [],
+      }))
+    );
+  }, [favorites]);
+  
+
+  console.log(usersInfo);
   console.log(favorites);
 
   // useEffect(() => {
