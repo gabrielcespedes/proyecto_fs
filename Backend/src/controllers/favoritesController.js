@@ -20,7 +20,7 @@ const create = async (req, res) => {
 
 const destroy = async (req, res) => {
     try {
-        const favorite = await deleteFavorite(req.params.id);
+        const favorite = await deleteFavorite(req.params.id, req.body);
         res.json(favorite);
     } catch (error) {
         res.status(500).json({ error: error.message });
