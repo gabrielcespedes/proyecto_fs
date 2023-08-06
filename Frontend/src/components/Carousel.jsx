@@ -70,7 +70,6 @@ const CarouselImages = () => {
                     </Col>
                 </Row>
             </Container>
-
     )
 }
 

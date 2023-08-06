@@ -7,6 +7,9 @@ const userRoutes = require('./src/routes/userRoutes');
 const artworksRoutes = require('./src/routes/artworksRoutes');
 const verifiedArtistsRoutes = require('./src/routes/verifiedArtistsRoutes');
 const cartRoutes = require('./src/routes/cartRoutes');
+const favoritesRoutes = require('./src/routes/favoritesRoutes');
+
+
 const app = express();
 
 app.use(cors());
@@ -27,5 +30,7 @@ app.use('/users', userRoutes);
 app.use('/artworks', artworksRoutes);
 app.use('/artist', verifiedArtistsRoutes);
 app.use('/cart', cartRoutes);
+app.use('/favorites', favoritesRoutes);
+
 
 module.exports = app;

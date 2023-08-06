@@ -12,9 +12,7 @@ const LoginView = () => {
     const [usuarioLocal, setUsuarioLocal] = useState({
         email: "",
         password: ""
-    });
-
-    
+    });   
 
     // // VERSION SOLO FRONTEND - Agregar aquí la lógica para manejar el envío del formulario
     // const handleSubmit = (e) => {

@@ -1,6 +1,6 @@
 
 CREATE DATABASE artMarket;
-\c artmarket
+\c artMarket
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (

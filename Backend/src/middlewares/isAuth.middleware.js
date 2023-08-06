@@ -13,6 +13,8 @@ const isAuth = (req, res, next) => {
         }
 
         req.body.seller_id = payload.user_id;
+        req.body.user_id = payload.user_id;
+
         next();
     } catch (error) {
         res.status(401).json({error: error.message});
