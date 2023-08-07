@@ -10,7 +10,7 @@ import Heart from '../components/Heart';
 import { addFavorite, removeFavorite } from "../services/favoritesService";
 
 const Home = () => {
-    const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, usersInfo, setUsersInfo} = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, usersInfo, setUsersInfo, addFunction} = useContext(MyContext);
     const navigate = useNavigate();
 
     const token = localStorage.getItem('token');
@@ -32,13 +32,6 @@ const Home = () => {
             console.error('Error al eliminar el favorito:', error);
         }
     };
-
-    const Add_Click = (id) => {
-        const artwork_index = artworks.findIndex((element) => element.product_id === id);
-        artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
-        setArtworks([...artworks]);
-        setNavTotal(updatingNavTotal);
-    }
 
     const Heart_Click = (id, user_id) => {
         const usersInfo_index = usersInfo.findIndex((e) => e.user_id === Number(user_id));        
@@ -85,7 +78,7 @@ const Home = () => {
                                     <hr></hr>
                                     <p>{element.description}</p>
                                     <div className="d-flex justify-content-around">
-                                        <button onClick={() => Add_Click(element.product_id)} className="btn btn-secondary">Añadir <i class="fa-solid fa-cart-shopping"></i></button>
+                                        <button onClick={() => addFunction(element.product_id)} className="btn btn-secondary">Añadir <i class="fa-solid fa-cart-shopping"></i></button>
                                         <button className="btn" >Value: ${element.price}</button>
                                     </div>
                                 </div>
