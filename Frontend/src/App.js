@@ -209,7 +209,7 @@ const updatingNavTotal = () => {
     const total = updatingNavTotal();
     setNavTotal(total);
     }
-  }, [cartInfo]);
+  }, [cartInfo, user]);
 
 
   
