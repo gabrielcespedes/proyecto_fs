@@ -64,6 +64,12 @@ const addFunction = async (id) => {
             "price": selectedProduct[0].price
         };
         await axios.post(urlServer+"/cart", body);
+
+        const artwork_index = artworks.findIndex((element) => element.product_id === id);
+        artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
+        setArtworks([...artworks]);
+        setNavTotal(updatingNavTotal);
+
         setReloadData(true);
     } catch (error) {
       console.error("Error en petición POST:", error);
