@@ -49,6 +49,12 @@ function App() {
             "product_id": selectedProduct[0].product_id
         };
         await axios.put(urlServer+"/cart/sustract", body);
+
+        const artwork_index = artworks.findIndex((element) => element.product_id === id);
+        artworks[artwork_index].amount = artworks[artwork_index].amount - 1;
+        setArtworks([...artworks]);
+        setNavTotal(updatingNavTotal);
+
         setReloadData(true);
     } catch (error) {
         console.error("Error en petición PUT:", error);
