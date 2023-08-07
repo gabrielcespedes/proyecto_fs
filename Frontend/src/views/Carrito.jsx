@@ -32,7 +32,11 @@ const Carrito = () => {
         <div className="container bg-light m-5 p-5">
             <h6 className="text-dark">Detalles del pedido:</h6>
             <div className="container bg-white p-3">
-                {cartInfo.map((element, index) => {return(
+                {cartInfo.filter((element) => {
+                    if (element.quantity > 0) {
+                        return element;
+                    }
+                }).map((element, index) => {return(
                 <div className="d-flex"><p key={index}>
                     <img src={element.url_image} width="100" alt="imagen obra"></img> {element.title}</p> 
                     <p key={index+10} className="ms-auto">{Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP'}).format(element.price * element.quantity)}
