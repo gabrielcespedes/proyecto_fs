@@ -4,8 +4,8 @@ import { useContext } from "react";
 import MyContext from "../my_context";
 
 const Navbar = () => {
-    const {navTotal, setNavTotal, isLoggedIn, setIsLoggedIn, setUser, artworks, setArtworks} = useContext(MyContext);
-
+    const {navTotal, setNavTotal, isLoggedIn, setIsLoggedIn, setUser, artworks, setArtworks} = useContext(MyContext);    
+    
     const Exit = () => {
         setIsLoggedIn(false);
         setUser(null);
@@ -21,7 +21,7 @@ const Navbar = () => {
 
         
     return isLoggedIn ? (
-        <div className="navbar bg-secondary fixed-top w-100">
+        <div className="navbar bg-secondary fixed-top w-100">            
             <div className="container">
                 <div className="navbar-brand">
                     <h5> <Link to="/carrito" className="text-light text-decoration-none"><i class="fa-solid fa-cart-shopping"></i> ${navTotal}</Link></h5>

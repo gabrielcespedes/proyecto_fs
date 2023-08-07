@@ -29,7 +29,7 @@ import { getFavorites } from './services/favoritesService';
 function App() {
   // const endpointArtists = "/artistsDB.json";
   const [artworks, setArtworks] = useState([]);
-  const [navTotal, setNavTotal] = useState(0); 
+  const [navTotal, setNavTotal] = useState(); 
   const [artistsInfo, setArtistsInfo] = useState([]);
 
   const [usersInfo, setUsersInfo] = useState([]);
@@ -209,7 +209,7 @@ const updatingNavTotal = () => {
     const total = updatingNavTotal();
     setNavTotal(total);
     }
-  }, [cartInfo, navTotal]);
+  }, [cartInfo]);
 
 
   
