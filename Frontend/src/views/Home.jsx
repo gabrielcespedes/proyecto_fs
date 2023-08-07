@@ -34,7 +34,7 @@ const Home = () => {
     };
 
     const Heart_Click = (id, user_id) => {
-        const usersInfo_index = usersInfo.findIndex((e) => e.user_id === Number(user_id));        
+        const usersInfo_index = usersInfo.findIndex((e) => e.user_id === user_id);        
         const favoritos = usersInfo[usersInfo_index].favorites;
         const imageToRemoveIndex = favoritos.indexOf(id);
 
@@ -53,7 +53,7 @@ const Home = () => {
     }
 
     const Evaluate_Heart = (id, user_id) => {
-        const usersInfo_index = usersInfo.findIndex((e) => e.user_id === Number(user_id));        
+        const usersInfo_index = usersInfo.findIndex((e) => e.user_id === user_id);        
         const favoritos = usersInfo[usersInfo_index].favorites;
         if (favoritos.includes(id)) {
             return true;
