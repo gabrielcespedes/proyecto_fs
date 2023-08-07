@@ -7,8 +7,8 @@ import MyContext from './my_context';
 
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
-import UserViewBuyer from './views/UserViewBuyer';
 
+import UserViewBuyer from './views/UserViewBuyer';
 import Home from './views/Home';
 import Carrito from './views/Carrito';
 import Artwork from './views/Artwork';
@@ -18,13 +18,13 @@ import Login from "./views/Login.jsx";
 import Favoritos from "./views/Favoritos";
 import Busqueda from './views/Busqueda';
 import DetailArtist from './views/DetailArtist';
+
 import axios from 'axios';
 
 import { getArtworks } from './services/artworksService';
 import { getVerifiedArtists } from './services/artistService';
 import { getUsers } from './services/usersService';
 import { getFavorites } from './services/favoritesService';
-
 
 function App() {
   // const endpointArtists = "/artistsDB.json";
@@ -40,6 +40,7 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const urlServer = "http://localhost:3000";
   const [reloadData, setReloadData] = useState(false);
+
   const sustractFunction = async (id) => {
     try {
         const selectedProduct = artworks.filter(e => e.product_id === id);
@@ -80,6 +81,7 @@ const sustractAndUpdate = async (product_id, user_id) => {
   const response = await getCart(user_id);
   return response
 };*/
+
 const updatingNavTotal = () => {
   //CALCULA EL VALOR TOTAL DEL CARRITO
   let total = 0;
@@ -88,6 +90,7 @@ const updatingNavTotal = () => {
       });
   return total
 };
+
   // useEffect(() => {    
   //   getArtworks()
   //     .then((data) => setArtworks(data))
