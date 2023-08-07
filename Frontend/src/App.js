@@ -198,6 +198,19 @@ const updatingNavTotal = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [favorites]);
 
+  useEffect(() => {
+    if (isLoggedIn === true) {
+      cartInfo.forEach(element => {
+        const id_producto = element.product_id;
+        const artwork_index = artworks.findIndex((artwork) => artwork.product_id === id_producto);
+        artworks[artwork_index].amount = element.quantity;
+        setArtworks([...artworks]);        
+    });
+    const total = updatingNavTotal();
+    setNavTotal(total);
+    }
+  }, [cartInfo, navTotal]);
+
 
   
 

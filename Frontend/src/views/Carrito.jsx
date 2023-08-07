@@ -6,7 +6,7 @@ import { getCart } from '../services/cartService';
 
 
 const Carrito = () => {
-    const {navTotal, setNavTotal, updatingNavTotal, user, cartInfo, setCartInfo, sustractFunction, addFunction, reloadData, setReloadData} = useContext(MyContext);
+    const {navTotal, setNavTotal, updatingNavTotal, user, cartInfo, setCartInfo, sustractFunction, addFunction, reloadData, setReloadData, artworks, setArtworks} = useContext(MyContext);
 
     const calculateTotal = () => {
         setNavTotal(updatingNavTotal);
@@ -24,9 +24,8 @@ const Carrito = () => {
         .catch((error) => console.error('Error al obtener informacion desde servidor.', error))
         .finally(() => {
             setReloadData(false);
-        });
-    }, [reloadData, user.user_id]);
-
+        });        
+    }, [reloadData, user.user_id]);   
 
     return(
         <div className="container bg-light m-5 p-5">
