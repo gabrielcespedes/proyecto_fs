@@ -7,7 +7,7 @@ import { useContext } from "react";
 import MyContext from "../my_context";
 
 const Artwork = () => {
-    const { artworks, setNavTotal, updatingNavTotal, usersInfo } = useContext(MyContext);
+    const { artworks, setNavTotal, updatingNavTotal, usersInfo, button_sustract, isLoggedIn} = useContext(MyContext);
     const {id} = useParams();
     const [count, setCount] = useState(1)
     
@@ -20,8 +20,8 @@ const Artwork = () => {
         }
     };
 
-    let selectedArtwork = artworks[artworks.findIndex((element) => element.product_id == id)];
-    let user = usersInfo[usersInfo.findIndex((e) => e.user_id == selectedArtwork.seller_id)];
+    let selectedArtwork = artworks[artworks.findIndex((element) => element.product_id === Number(id))];
+    let user = usersInfo[usersInfo.findIndex((e) => e.user_id === selectedArtwork.seller_id)];
     const addingAmount = () => {
         selectedArtwork.amount += count;
         setNavTotal(updatingNavTotal);
@@ -40,12 +40,13 @@ const Artwork = () => {
             <Card.Text className="my-3 text-left"><strong>Artist: {user.username}</strong></Card.Text>
             <Card.Text className="my-3 text-left">{selectedArtwork.description}</Card.Text>
             <Card.Text className='h4 text-left'>{Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP'}).format(selectedArtwork.price)}</Card.Text>
+            {isLoggedIn &&
             <ButtonGroup className='mt-3'>
-                <Button className="mx-2 bg-light text-dark" onClick={decrement}>-</Button>
-                <h3 className="mx-1">{count}</h3>
-                <Button className="mx-2 bg-light text-dark" onClick={increment}>+</Button>
-                <Button variant="dark p-2" onClick={addingAmount}>Añadir <i class="fa-solid fa-cart-shopping"></i></Button>
-            </ButtonGroup>
+            <Button className="mx-2 bg-light text-dark" onClick={decrement}>-</Button>
+            <h3 className="mx-1">{count}</h3>
+            <Button className="mx-2 bg-light text-dark" onClick={increment}>+</Button>
+            <Button variant="dark p-2" onClick={addingAmount}>Añadir <i class="fa-solid fa-cart-shopping"></i></Button>
+            </ButtonGroup>}            
             </Col>
         </Row>
         </Container>

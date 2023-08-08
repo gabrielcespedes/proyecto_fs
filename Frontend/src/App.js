@@ -7,8 +7,8 @@ import MyContext from './my_context';
 
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
-import UserViewBuyer from './views/UserViewBuyer';
 
+import UserViewBuyer from './views/UserViewBuyer';
 import Home from './views/Home';
 import Carrito from './views/Carrito';
 import Artwork from './views/Artwork';
@@ -19,16 +19,17 @@ import Favoritos from "./views/Favoritos";
 import Busqueda from './views/Busqueda';
 import DetailArtist from './views/DetailArtist';
 
+import axios from 'axios';
+
 import { getArtworks } from './services/artworksService';
 import { getVerifiedArtists } from './services/artistService';
 import { getUsers } from './services/usersService';
 import { getFavorites } from './services/favoritesService';
 
-
 function App() {
   // const endpointArtists = "/artistsDB.json";
   const [artworks, setArtworks] = useState([]);
-  const [navTotal, setNavTotal] = useState(0); 
+  const [navTotal, setNavTotal] = useState(''); 
   const [artistsInfo, setArtistsInfo] = useState([]);
 
   const [usersInfo, setUsersInfo] = useState([]);
@@ -36,7 +37,71 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [cartInfo, setCartInfo] = useState([]);
-  const [favorites, setFavorites] = useState([]); 
+  const [favorites, setFavorites] = useState([]);
+  const urlServer = "http://localhost:3000";
+  const [reloadData, setReloadData] = useState(false);
+
+  const sustractFunction = async (id) => {
+    try {
+        const selectedProduct = artworks.filter(e => e.product_id === id);
+        const body = {
+            "user_id": user.user_id,
+            "product_id": selectedProduct[0].product_id
+        };
+        await axios.put(urlServer+"/cart/sustract", body);
+
+        const artwork_index = artworks.findIndex((element) => element.product_id === id);
+        artworks[artwork_index].amount = artworks[artwork_index].amount - 1;
+        setArtworks([...artworks]);
+        setNavTotal(updatingNavTotal);
+
+        setReloadData(true);
+    } catch (error) {
+        console.error("Error en petición PUT:", error);
+        throw error;
+    }
+};
+const addFunction = async (id) => {
+    try {
+        const selectedProduct = artworks.filter(e => e.product_id === id);
+        const body = {
+            "user_id": user.user_id,
+            "product_id": selectedProduct[0].product_id,
+            "price": selectedProduct[0].price
+        };
+        await axios.post(urlServer+"/cart", body);
+
+        const artwork_index = artworks.findIndex((element) => element.product_id === id);
+        artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
+        setArtworks([...artworks]);
+        setNavTotal(updatingNavTotal);
+
+        setReloadData(true);
+    } catch (error) {
+      console.error("Error en petición POST:", error);
+      throw error;
+    }
+};
+
+/*const addAndUpdate = async (product_id, user_id) => {
+  await addFunction(product_id);
+  const response = await getCart(user_id);
+  return response
+};
+const sustractAndUpdate = async (product_id, user_id) => {
+  await sustractFunction(product_id);
+  const response = await getCart(user_id);
+  return response
+};*/
+
+const updatingNavTotal = () => {
+  //CALCULA EL VALOR TOTAL DEL CARRITO
+  let total = 0;
+      artworks.forEach((element) => {
+          total += element.price * element.amount;
+      });
+  return total
+};
 
   // useEffect(() => {    
   //   getArtworks()
@@ -132,10 +197,22 @@ function App() {
     );
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [favorites]);
-  
 
-  console.log(usersInfo);
-  console.log(favorites);
+  useEffect(() => {
+    if (isLoggedIn === true) {
+      cartInfo.forEach(element => {
+        const id_producto = element.product_id;
+        const artwork_index = artworks.findIndex((artwork) => artwork.product_id === id_producto);
+        artworks[artwork_index].amount = element.quantity;
+        setArtworks([...artworks]);        
+    });
+    const total = updatingNavTotal();
+    setNavTotal(total);
+    }
+  }, [cartInfo]);
+
+
+  
 
   // useEffect(() => {
   //   dataArtworks();
@@ -156,16 +233,9 @@ function App() {
   //   setArtistsInfo([...data.artists]);
   // };
 
-  const updatingNavTotal = () => {
-    //CALCULA EL VALOR TOTAL DEL CARRITO
-    let total = 0;
-        artworks.forEach((element) => {
-            total += element.price * element.amount;
-        });
-    return total
-  };
 
-  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, isLoggedIn, setIsLoggedIn, user, setUser, usersInfo, setUsersInfo, cartInfo, setCartInfo};
+
+  const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, isLoggedIn, setIsLoggedIn, user, setUser, usersInfo, setUsersInfo, cartInfo, setCartInfo, sustractFunction, addFunction, reloadData, setReloadData};
 
   return (
     
