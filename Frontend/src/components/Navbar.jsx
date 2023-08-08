@@ -5,7 +5,7 @@ import MyContext from "../my_context";
 
 const Navbar = () => {
     const {navTotal, setNavTotal, isLoggedIn, setIsLoggedIn, setUser, artworks, setArtworks} = useContext(MyContext);    
-    
+
     const Exit = () => {
         setIsLoggedIn(false);
         setUser(null);
