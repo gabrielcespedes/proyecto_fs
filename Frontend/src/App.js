@@ -73,7 +73,13 @@ const addFunction = async (id, counter = null) => {
         await axios.post(urlServer+"/cart", body);
 
         const artwork_index = artworks.findIndex((element) => element.product_id === id);
-        artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
+
+        if (counter === null) {
+          artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
+        } else {
+          artworks[artwork_index].amount = artworks[artwork_index].amount + counter;
+        }
+        
         setArtworks([...artworks]);
         setNavTotal(updatingNavTotal);
 
