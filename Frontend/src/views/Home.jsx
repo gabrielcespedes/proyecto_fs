@@ -10,7 +10,7 @@ import Heart from '../components/Heart';
 import { addFavorite, removeFavorite } from "../services/favoritesService";
 
 const Home = () => {
-    const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, usersInfo, setUsersInfo, addFunction, isLoggedIn} = useContext(MyContext);
+    const { artworks, user, usersInfo, setUsersInfo, addFunction, isLoggedIn} = useContext(MyContext);
 
     const navigate = useNavigate();
 

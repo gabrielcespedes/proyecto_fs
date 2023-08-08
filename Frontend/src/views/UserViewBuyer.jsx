@@ -28,7 +28,7 @@ const UserViewBuyer = ({ user }) => {
         .finally(() => {
             setReloadData(false);
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps        
+    // eslint-disable-next-line react-hooks/exhaustive-deps          
     }, [user.user_id]);
 
     const [artworkData, setArtworkData] = useState({

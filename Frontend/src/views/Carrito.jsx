@@ -25,7 +25,6 @@ const Carrito = () => {
         .finally(() => {
             setReloadData(false);
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps          
     }, [reloadData]);   
 
     return(

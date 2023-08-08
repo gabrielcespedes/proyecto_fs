@@ -10,12 +10,12 @@ const cartRoutes = require('./src/routes/cartRoutes');
 const favoritesRoutes = require('./src/routes/favoritesRoutes');
 const loggerMiddleware = require('./src/middlewares/logger.middleware')
 
-
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 3000;
+
 
 app.listen(PORT, () => {
     console.log(`SERVIDOR ENCENDIDO EN PUERTO ${PORT}`);
@@ -25,7 +25,7 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
     res.send('ArtMarket');
 });
-app.use(loggerMiddleware);
+// app.use(loggerMiddleware);
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/artworks', artworksRoutes);

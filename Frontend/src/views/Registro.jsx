@@ -6,26 +6,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import MyContext from '../my_context';
 
-const RegisterView = () => {
-    // const [fullName, setFullName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [isRegistered, setIsRegistered] = useState(false); 
-
-    // const { setUser, setUsersInfo } = useContext(MyContext);   
+const RegisterView = () => {  
 
     const navigate = useNavigate();
-    const [usuario, setUsuario] = useState({});
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     // logica registro
-    //     console.log('Nombre completo:', fullName);
-    //     console.log('Email:', email);
-    //     console.log('Contraseña:', password);
-
-    //     setIsRegistered(true);
-    // };
+    const [usuario, setUsuario] = useState({});    
 
     const handleSubmit = ({ target: { value, name } }) => {
         const field = {};

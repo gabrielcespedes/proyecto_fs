@@ -7,7 +7,7 @@ import { useContext } from "react";
 import MyContext from "../my_context";
 
 const Artwork = () => {
-    const { artworks, setNavTotal, updatingNavTotal, usersInfo, addFunction, isLoggedIn} = useContext(MyContext);
+    const { artworks, usersInfo, addFunction, isLoggedIn} = useContext(MyContext);
     const {id} = useParams();
     const [count, setCount] = useState(1)
     
