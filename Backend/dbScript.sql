@@ -56,7 +56,7 @@ CREATE TABLE cart_example (
     user_id INT,
     product_id INT,
     price INT,
-    quantity INT NOT NULL CHECK (quantity >= 0),
+    quantity INT DEFAULT 1,
     paid boolean DEFAULT false,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
