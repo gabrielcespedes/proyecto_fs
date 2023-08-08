@@ -3,14 +3,33 @@ import {Card, Container} from 'react-bootstrap';
 import CardGroup from 'react-bootstrap/CardGroup'
 
 
-// import UserCard from '../components/UserCard';
-
 import { useContext } from "react";
 import MyContext from "../my_context";
 
 import { addArtwork } from '../services/artworksService';
 
-const UserViewBuyer = ({ user }) => {           
+import { useEffect } from 'react';
+import { getCart } from '../services/cartService';
+
+const UserViewBuyer = ({ user }) => {
+
+    const { reloadData, setReloadData, setCartInfo } = useContext(MyContext);
+    
+    useEffect(() => {          
+        console.log("EL RELOAD ESTA EN ESTADO (ANTES DE MONTAR componente): "+reloadData);
+        getCart(user.user_id)
+            .then((data) => {
+                const cart = data.map((product => ({
+                ...product
+            })));
+            setCartInfo([...cart]);
+        })
+        .catch((error) => console.error('Error al obtener informacion desde servidor.', error))
+        .finally(() => {
+            setReloadData(false);
+        });
+    // eslint-disable-next-line react-hooks/exhaustive-deps        
+    }, [user.user_id]);
 
     const [artworkData, setArtworkData] = useState({
         title: '',
@@ -63,38 +82,8 @@ const UserViewBuyer = ({ user }) => {
     };
 
     const { artworks, setArtworks } = useContext(MyContext);
-    const artistCollection = artworks.filter((element) => element.seller_id == user.user_id);
+    const artistCollection = artworks.filter((element) => element.seller_id === user.user_id);
 
-    // const [input_title, setInput_title] = useState('');
-    // const [input_description, setInput_description] = useState('');
-    // const [input_price, setInput_price] = useState(0);
-    // const [input_url_image, setInput_url_image] = useState('');
-
-    // const handleInput_title = (e) => {
-    //     setInput_title(e.target.value);
-    // }
-    // const handleInput_description = (e) => {
-    //     setInput_description(e.target.value);
-    // }
-    // const handleInput_price = (e) => {
-    //     const value = Number(e.target.value);
-    //     if (!isNaN(value)) {
-    //         setInput_price(value);
-    //     } else {
-    //         setInput_price(0);
-    //     }        
-    // }
-    // const handleInput_url_image = (e) => {
-    //     setInput_url_image(e.target.value);
-    // }
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     setArtworks([...artworks, {product_id: artworks.length + 1, title: input_title, description: input_description, price: input_price, url_image: input_url_image, seller_id: user.user_id, amount: 0}])
-    //     setInput_title('');
-    //     setInput_description('');
-    //     setInput_price(0);
-    //     setInput_url_image('');
-    // }
     return (
         <Container className='d-flex align-items-center flex-column vh-100 mt-5 mb-3 pt-5'>
             <h2>Bienvenido, {user.username}</h2>

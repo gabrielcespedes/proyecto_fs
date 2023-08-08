@@ -7,7 +7,7 @@ import { useContext } from "react";
 import MyContext from "../my_context";
 
 const Artwork = () => {
-    const { artworks, setNavTotal, updatingNavTotal, usersInfo, button_sustract, isLoggedIn} = useContext(MyContext);
+    const { artworks, setNavTotal, updatingNavTotal, usersInfo, addFunction, isLoggedIn} = useContext(MyContext);
     const {id} = useParams();
     const [count, setCount] = useState(1)
     
@@ -22,10 +22,6 @@ const Artwork = () => {
 
     let selectedArtwork = artworks[artworks.findIndex((element) => element.product_id === Number(id))];
     let user = usersInfo[usersInfo.findIndex((e) => e.user_id === selectedArtwork.seller_id)];
-    const addingAmount = () => {
-        selectedArtwork.amount += count;
-        setNavTotal(updatingNavTotal);
-    };
 
     return(
         <Container className="border m-5 p-5">
@@ -45,7 +41,7 @@ const Artwork = () => {
             <Button className="mx-2 bg-light text-dark" onClick={decrement}>-</Button>
             <h3 className="mx-1">{count}</h3>
             <Button className="mx-2 bg-light text-dark" onClick={increment}>+</Button>
-            <Button variant="dark p-2" onClick={addingAmount}>Añadir <i class="fa-solid fa-cart-shopping"></i></Button>
+            <Button variant="dark p-2" onClick={() => addFunction(selectedArtwork.product_id, count)}>Añadir <i class="fa-solid fa-cart-shopping"></i></Button>
             </ButtonGroup>}            
             </Col>
         </Row>

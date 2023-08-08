@@ -29,7 +29,7 @@ import { getFavorites } from './services/favoritesService';
 function App() {
   // const endpointArtists = "/artistsDB.json";
   const [artworks, setArtworks] = useState([]);
-  const [navTotal, setNavTotal] = useState(''); 
+  const [navTotal, setNavTotal] = useState(0); 
   const [artistsInfo, setArtistsInfo] = useState([]);
 
   const [usersInfo, setUsersInfo] = useState([]);
@@ -61,18 +61,25 @@ function App() {
         throw error;
     }
 };
-const addFunction = async (id) => {
+const addFunction = async (id, counter = null) => {
     try {
         const selectedProduct = artworks.filter(e => e.product_id === id);
         const body = {
             "user_id": user.user_id,
             "product_id": selectedProduct[0].product_id,
-            "price": selectedProduct[0].price
+            "price": selectedProduct[0].price,
+            "quantity": counter !== null ? counter : undefined
         };
         await axios.post(urlServer+"/cart", body);
 
         const artwork_index = artworks.findIndex((element) => element.product_id === id);
-        artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
+
+        if (counter === null) {
+          artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
+        } else {
+          artworks[artwork_index].amount = artworks[artwork_index].amount + counter;
+        }
+        
         setArtworks([...artworks]);
         setNavTotal(updatingNavTotal);
 
@@ -83,16 +90,27 @@ const addFunction = async (id) => {
     }
 };
 
-/*const addAndUpdate = async (product_id, user_id) => {
-  await addFunction(product_id);
-  const response = await getCart(user_id);
-  return response
+const addOneOrMore = async (id) => {
+  try {
+      const selectedProduct = artworks.filter(e => e.product_id === id);
+      const body = {
+          "user_id": user.user_id,
+          "product_id": selectedProduct[0].product_id,
+          "price": selectedProduct[0].price
+      };
+      await axios.post(urlServer+"/cart", body);
+
+      const artwork_index = artworks.findIndex((element) => element.product_id === id);
+      artworks[artwork_index].amount = artworks[artwork_index].amount + 1;
+      setArtworks([...artworks]);
+      setNavTotal(updatingNavTotal);
+
+      setReloadData(true);
+  } catch (error) {
+    console.error("Error en petición POST:", error);
+    throw error;
+  }
 };
-const sustractAndUpdate = async (product_id, user_id) => {
-  await sustractFunction(product_id);
-  const response = await getCart(user_id);
-  return response
-};*/
 
 const updatingNavTotal = () => {
   //CALCULA EL VALOR TOTAL DEL CARRITO
@@ -103,11 +121,7 @@ const updatingNavTotal = () => {
   return total
 };
 
-  // useEffect(() => {    
-  //   getArtworks()
-  //     .then((data) => setArtworks(data))
-  //     .catch((error) => console.error('Error al obtener las obras de arte:', error));
-  // }, []);
+
 
   useEffect(() => {    
     getArtworks()
@@ -148,31 +162,6 @@ const updatingNavTotal = () => {
 
   }, []);
 
-  // const detectFavorites = () => {
-  //   if (usersInfo.length === 0 || favorites.length === 0) {
-  //     return;
-  //   }
-
-  //   const usersMap = new Map(usersInfo.map(user => [user.user_id, user]));
-
-  //   favorites.forEach(favorite => {
-  //     const user = usersMap.get(favorite.user_id);
-  //     if (user && user.favorites) {
-  //       user.favorites.push(favorite.product_id);
-  //     }
-  //   });
-
-  //   setUsersInfo(prevUsersInfo =>
-  //     prevUsersInfo.map(user => ({
-  //       ...user,
-  //       favorites: usersMap.get(user.user_id)?.favorites || [],
-  //     }))
-  //   );
-  // };
-
-  // useEffect(() => {
-  //   detectFavorites();
-  // }, [favorites]);
 
   
   useEffect(() => {
@@ -210,29 +199,6 @@ const updatingNavTotal = () => {
     setNavTotal(total);
     }
   }, [cartInfo]);
-
-
-  
-
-  // useEffect(() => {
-  //   dataArtworks();
-  //   dataArtists();
-  // }, [])
-
-  // const dataArtworks = async () => {
-  //   const responseData = await fetch(endpoint);
-  //   const dataArtworks = await responseData.json();
-  //   dataArtworks.artworks.map(element => element.amount = 0);
-  //   setArtworks([...dataArtworks.artworks]);
-  // };
-
-  // const dataArtists = async () => {
-  //   const responseData = await fetch(endpointArtists);
-  //   const data = await responseData.json();
-  //   data.artists.map(element => element.favorites = []);
-  //   setArtistsInfo([...data.artists]);
-  // };
-
 
 
   const estadoCompartido = {artworks, setArtworks, navTotal, setNavTotal, updatingNavTotal, artistsInfo, setArtistsInfo, isLoggedIn, setIsLoggedIn, user, setUser, usersInfo, setUsersInfo, cartInfo, setCartInfo, sustractFunction, addFunction, reloadData, setReloadData};

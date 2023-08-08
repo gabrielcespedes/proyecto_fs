@@ -6,12 +6,12 @@ import { getCart } from '../services/cartService';
 
 
 const Carrito = () => {
-    const {navTotal, setNavTotal, updatingNavTotal, user, cartInfo, setCartInfo, sustractFunction, addFunction, reloadData, setReloadData, artworks, setArtworks} = useContext(MyContext);
+    const {navTotal, user, cartInfo, setCartInfo, sustractFunction, addFunction, reloadData, setReloadData} = useContext(MyContext);
 
-    const calculateTotal = () => {
-        setNavTotal(updatingNavTotal);
-        return navTotal;
-    };
+    // const calculateTotal = () => {
+    //     setNavTotal(updatingNavTotal);
+    //     return navTotal;
+    // };
     useEffect(() => {          
         console.log("EL RELOAD ESTA EN ESTADO (ANTES DE MONTAR componente): "+reloadData);
         getCart(user.user_id)
@@ -24,8 +24,9 @@ const Carrito = () => {
         .catch((error) => console.error('Error al obtener informacion desde servidor.', error))
         .finally(() => {
             setReloadData(false);
-        });        
-    }, [reloadData, user.user_id]);   
+        });
+    // eslint-disable-next-line react-hooks/exhaustive-deps          
+    }, [reloadData]);   
 
     return(
         <div className="container bg-light m-5 p-5">
@@ -43,7 +44,7 @@ const Carrito = () => {
                     <button className="btn mx-2" style={{backgroundColor: 'rgba(130, 160, 200, 1)', color: '#fff'}} onClick={() => addFunction(element.product_id)}>+</button> </p> 
                     <hr></hr></div> )})}
                     <div className="text-end">
-                        <h3 className="text-dark">Total: {Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP'}).format(calculateTotal())}                                      
+                        <h3 className="text-dark">Total: {Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP'}).format(navTotal)}                                      
                         </h3>
                         <button className="btn btn-dark">Ir a Pagar</button>
                     </div>                
