@@ -8,6 +8,7 @@ const artworksRoutes = require('./src/routes/artworksRoutes');
 const verifiedArtistsRoutes = require('./src/routes/verifiedArtistsRoutes');
 const cartRoutes = require('./src/routes/cartRoutes');
 const favoritesRoutes = require('./src/routes/favoritesRoutes');
+const loggerMiddleware = require('./src/middlewares/logger.middleware')
 
 
 const app = express();
@@ -24,7 +25,7 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
     res.send('ArtMarket');
 });
-
+app.use(loggerMiddleware);
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/artworks', artworksRoutes);

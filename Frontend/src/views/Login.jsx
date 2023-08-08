@@ -54,7 +54,8 @@ const LoginView = () => {
 
             //setUser(usuarioLocal);
             
-            setIsLoggedIn(true);           
+            setIsLoggedIn(true); 
+
         }   catch ({ response: { data: message } }) {
             alert("Credenciales inválidas");
             console.log(message);

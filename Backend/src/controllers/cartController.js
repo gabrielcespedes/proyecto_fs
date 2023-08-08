@@ -1,4 +1,4 @@
-const {getProductByID, getCartInfo, addProduct, addOne, sustractOne, getCarts} = require('../models/shoppingCart');
+const {getProductByID, getCartInfo, addProduct, addOne, sustractOne, getCarts, addOneOrMore, deleteProducts} = require('../models/shoppingCart');
 
 
 const getAll = async (req, res) => {
@@ -39,6 +39,7 @@ const sustract = async (req, res) => {
         const product = await getProductByID(req.body);
         if (product) {
             const sustractingProduct = await sustractOne(req.body);
+            deleteProducts(req.body.user_id);
             res.json(sustractingProduct);
         }
     } catch (error) {
